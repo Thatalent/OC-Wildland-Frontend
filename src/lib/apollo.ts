@@ -1,18 +1,18 @@
-import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
+import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 
-const httpLink = createHttpLink({
-  uri: import.meta.env.VITE_GRAPHQL_ENDPOINT || 'http://localhost:4000/graphql',
-})
+export const httpLink = createHttpLink({
+  uri: import.meta.env.VITE_GRAPHQL_ENDPOINT || "http://localhost:3000/api/",
+});
 
 export const apolloClient = new ApolloClient({
   link: httpLink,
   cache: new InMemoryCache(),
   defaultOptions: {
     watchQuery: {
-      errorPolicy: 'ignore',
+      errorPolicy: "ignore",
     },
     query: {
-      errorPolicy: 'all',
+      errorPolicy: "all",
     },
   },
-})
+});

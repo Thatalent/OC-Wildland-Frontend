@@ -1,5 +1,13 @@
-import { Box, Typography, Card, CardContent, Button, Grid } from '@mui/material'
-import { useQuery, gql } from '@apollo/client'
+import {
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  Button,
+  Grid,
+} from "@mui/material";
+import { useQuery, gql } from "@apollo/client";
+import Hero from "../components/Hero";
 
 // Example GraphQL query - replace with your actual schema
 const GET_WILDLAND_DATA = gql`
@@ -11,17 +19,22 @@ const GET_WILDLAND_DATA = gql`
       status
     }
   }
-`
+`;
 
 function Home() {
-  const { loading, error, data } = useQuery(GET_WILDLAND_DATA)
+  const { loading, error, data } = useQuery(GET_WILDLAND_DATA);
 
-  if (loading) return <Typography>Loading...</Typography>
-  if (error) return <Typography color="error">Error: {error.message}</Typography>
+  // if (loading) return <Typography>Loading...</Typography>
+  // if (error) return <Typography color="error">Error: {error.message}</Typography>
 
   return (
     <Box>
-      <Typography variant="h3" component="h1" className="mb-8 text-gray-800 font-bold">
+      <Hero />
+      <Typography
+        variant="h3"
+        component="h1"
+        className="mb-8 text-gray-800 font-bold"
+      >
         Welcome to OC Wildland
       </Typography>
 
@@ -33,11 +46,16 @@ function Home() {
         <Grid item xs={12} md={6}>
           <Card className="h-full">
             <CardContent className="p-6">
-              <Typography variant="h5" component="h2" className="mb-4 text-gray-800">
+              <Typography
+                variant="h5"
+                component="h2"
+                className="mb-4 text-gray-800"
+              >
                 Current Status
               </Typography>
               <Typography variant="body1" className="mb-4 text-gray-600">
-                Real-time monitoring of wildland conditions and fire risk assessment.
+                Real-time monitoring of wildland conditions and fire risk
+                assessment.
               </Typography>
               <Button
                 variant="contained"
@@ -53,7 +71,11 @@ function Home() {
         <Grid item xs={12} md={6}>
           <Card className="h-full">
             <CardContent className="p-6">
-              <Typography variant="h5" component="h2" className="mb-4 text-gray-800">
+              <Typography
+                variant="h5"
+                component="h2"
+                className="mb-4 text-gray-800"
+              >
                 Fire Prevention
               </Typography>
               <Typography variant="body1" className="mb-4 text-gray-600">
@@ -74,7 +96,11 @@ function Home() {
           <Grid item xs={12}>
             <Card>
               <CardContent className="p-6">
-                <Typography variant="h5" component="h2" className="mb-4 text-gray-800">
+                <Typography
+                  variant="h5"
+                  component="h2"
+                  className="mb-4 text-gray-800"
+                >
                   Wildland Areas
                 </Typography>
                 <Grid container spacing={2}>
@@ -83,7 +109,9 @@ function Home() {
                       <Card variant="outlined">
                         <CardContent>
                           <Typography variant="h6">{wildland.name}</Typography>
-                          <Typography color="textSecondary">{wildland.location}</Typography>
+                          <Typography color="textSecondary">
+                            {wildland.location}
+                          </Typography>
                           <Typography variant="body2" className="mt-2">
                             Status: {wildland.status}
                           </Typography>
@@ -98,7 +126,7 @@ function Home() {
         )}
       </Grid>
     </Box>
-  )
+  );
 }
 
-export default Home
+export default Home;
