@@ -1,27 +1,27 @@
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath, URL } from "node:url";
 
-import { defineConfig } from '@typescript-eslint/eslint-plugin'
+import { defineConfig } from "@typescript-eslint/eslint-plugin";
 
 export default [
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ["**/*.{ts,tsx}"],
     extends: [
-      'eslint:recommended',
-      '@typescript-eslint/recommended',
-      'plugin:react-hooks/recommended',
+      "eslint:recommended",
+      "@typescript-eslint/recommended",
+      "plugin:react-hooks/recommended",
     ],
-    ignores: ['dist'],
-    parser: '@typescript-eslint/parser',
+    ignores: ["dist"],
+    parser: "@typescript-eslint/parser",
     parserOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
+      ecmaVersion: "latest",
+      sourceType: "module",
     },
-    plugins: ['react-refresh'],
+    plugins: ["react-refresh"],
     rules: {
-      'react-refresh/only-export-components': [
-        'warn',
+      "react-refresh/only-export-components": [
+        "warn",
         { allowConstantExport: true },
       ],
     },
   },
-]
+];

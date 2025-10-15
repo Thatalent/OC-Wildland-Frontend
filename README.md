@@ -19,22 +19,26 @@ A modern React application for monitoring and managing Orange County's wildland 
 ## 🛠️ Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd OC-Wildland-Frontend
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Create environment file:
+
 ```bash
 cp .env.example .env
 ```
 
 4. Update the `.env` file with your GraphQL endpoint:
+
 ```
 VITE_GRAPHQL_ENDPOINT=http://localhost:4000/graphql
 ```
@@ -42,22 +46,27 @@ VITE_GRAPHQL_ENDPOINT=http://localhost:4000/graphql
 ## 🏃 Running the Application
 
 ### Development Mode
+
 ```bash
 npm run dev
 ```
+
 Opens the application at `http://localhost:3000` with hot reload enabled.
 
 ### Build for Production
+
 ```bash
 npm run build
 ```
 
 ### Preview Production Build
+
 ```bash
 npm run preview
 ```
 
 ### Lint Code
+
 ```bash
 npm run lint
 ```
@@ -78,6 +87,7 @@ src/
 ## 🎨 Styling
 
 This project uses a combination of:
+
 - **Material-UI** for pre-built components
 - **Tailwind CSS** for utility classes and custom styling
 - **MUI Theme** for consistent design tokens
@@ -89,11 +99,12 @@ Tailwind's preflight styles are disabled to avoid conflicts with MUI components.
 The application is set up with Apollo Client for GraphQL integration. Update the queries in `src/graphql/queries.ts` to match your GraphQL schema.
 
 Example usage:
-```typescript
-import { useQuery } from '@apollo/client'
-import { GET_WILDLANDS } from '../graphql/queries'
 
-const { loading, error, data } = useQuery(GET_WILDLANDS)
+```typescript
+import { useQuery } from "@apollo/client";
+import { GET_WILDLANDS } from "../graphql/queries";
+
+const { loading, error, data } = useQuery(GET_WILDLANDS);
 ```
 
 ## 🚀 Deployment
@@ -101,6 +112,7 @@ const { loading, error, data } = useQuery(GET_WILDLANDS)
 The application can be deployed to any static hosting service:
 
 1. Build the application:
+
 ```bash
 npm run build
 ```
