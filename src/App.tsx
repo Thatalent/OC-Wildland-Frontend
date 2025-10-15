@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Container, AppBar, Toolbar, Typography, Box } from '@mui/material'
 import Home from './pages/Home'
 import About from './pages/About'
+import HeroComponent from './components/HeroComponent'
 
 function App() {
   return (
@@ -20,6 +21,15 @@ function App() {
           <Route path="/about" element={<About />} />
         </Routes>
       </Container>
+      <HeroComponent
+        title="Protecting Orange County's Wildlands"
+        subtitle="Advanced Monitoring and Fire Prevention"
+        buttons={[
+          { text: 'Learn More', link: '/about' },
+          { text: 'Get Involved', link: '/contact' },
+        ]}
+        backgroundImage="/public/vite.svg"
+      />
     </Box>
   )
 }

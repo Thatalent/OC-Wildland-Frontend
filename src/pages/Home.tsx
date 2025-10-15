@@ -14,7 +14,7 @@ const GET_WILDLAND_DATA = gql`
 `
 
 function Home() {
-  const { loading, error, data } = useQuery(GET_WILDLAND_DATA)
+  // const { loading, error, data } = useQuery(GET_WILDLAND_DATA)
 
   if (loading) return <Typography>Loading...</Typography>
   if (error) return <Typography color="error">Error: {error.message}</Typography>
