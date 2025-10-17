@@ -4,9 +4,9 @@ import TestimonyCarousel from "../components/TestimonyCarousel"
 
 function About() {
   return (
-    <Box>
+    <div>
       <TestimonyCarousel />
-    </Box>
+    </div>
   )
 }
 

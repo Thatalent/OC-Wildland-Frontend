@@ -8,20 +8,21 @@ interface TestimonyCardProps {
 
 function TestimonyCard({testimony}: TestimonyCardProps) {
   return (
-     <Card className="p-8">
-      <div className="flex items-center mb-4">
-        <img
-          className="w-20 h-20 rounded-full mr-6"
-          src={testimony.imageUrl}
-          alt={testimony.name}
-        />
-        <div>
-          <h3 className="text-lg font-semibold text-gray-800">{testimony.name}</h3>
-          <p className="text-gray-600">{testimony.role}</p>
-        </div>
-      </div>
-      <em className="text-gray-700 block">"{testimony.message}"</em>
-    </Card>
+    <Card className="p-[25px] text-left min-h-[218px] max-w-[592px]">
+  <div className="flex items-center mb-4">
+    <img
+      className="w-[48px] h-[48px] rounded-full mr-6"
+      src={testimony.imageUrl}
+      alt={testimony.name}
+    />
+    <div>
+      <h3 className="text-lg font-semibold text-gray-800 m-0">{testimony.name}</h3>
+      <p className="text-gray-600 m-0">{testimony.role}</p>
+    </div>
+  </div>
+  <em className="text-gray-700 block">{testimony.message}</em>
+</Card>
+
   )
 }
 

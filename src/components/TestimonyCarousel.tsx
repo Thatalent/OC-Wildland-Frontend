@@ -22,6 +22,12 @@ function TestimonyCarousel() {
   const prev = () =>
     setIndex((prev) => (prev - 2 < 0 ? testimonies.length - 2 : prev - 2))
 
+  // Automatically increment the carousel
+  useEffect(() => {
+  const interval = setInterval(next, 7000)
+  return () => clearInterval(interval)
+}, [testimonies])
+
 // Load Testimonies from Backend on mount
   useEffect(() => {
     fetch("http://localhost:3000/api/graphql", {
@@ -48,15 +54,6 @@ function TestimonyCarousel() {
       .catch((err) => console.error("Error fetching testimonies:", err))
   }, [])
 
-
-  // Automatically increment the carousel
-  useEffect(() => {
-  const interval = setInterval(next, 7000)
-  return () => clearInterval(interval)
-}, [testimonies])
-
-
-
   return (
     <Box className="text-center mt-12">
       <Typography variant="h4" >
@@ -66,9 +63,9 @@ function TestimonyCarousel() {
         Real impact from our training programs
       </Typography>
 
-      <div className="flex flex-wrap justify-center gap-8 mt-10 max-w-5xl mx-auto">
+      <div className="flex flex-wrap justify-center gap-8 mt-10 mt-12">
         {visible.length > 0 && visible.map((data) => (
-          <div key={data.id} className="w-full md:w-[45%]">
+          <div key={data.id} className="w-full sm:w-[592px]">
             <TestimonyCard testimony={data} />
           </div>
         ))}
