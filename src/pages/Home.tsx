@@ -14,10 +14,10 @@ const GET_WILDLAND_DATA = gql`
 `
 
 function Home() {
-  const { loading, error, data } = useQuery(GET_WILDLAND_DATA)
+  // const { loading, error, data } = useQuery(GET_WILDLAND_DATA)
 
-  if (loading) return <Typography>Loading...</Typography>
-  if (error) return <Typography color="error">Error: {error.message}</Typography>
+  // if (loading) return <Typography>Loading...</Typography>
+  // if (error) return <Typography color="error">Error: {error.message}</Typography>
 
   return (
     <Box>
@@ -70,7 +70,7 @@ function Home() {
           </Card>
         </Grid>
 
-        {data?.wildlands && (
+        {/* {data?.wildlands && (
           <Grid item xs={12}>
             <Card>
               <CardContent className="p-6">
@@ -95,7 +95,7 @@ function Home() {
               </CardContent>
             </Card>
           </Grid>
-        )}
+        )} */}
       </Grid>
     </Box>
   )
