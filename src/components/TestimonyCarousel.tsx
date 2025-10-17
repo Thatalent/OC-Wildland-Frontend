@@ -1,50 +1,61 @@
-import { Box, Typography } from '@mui/material'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { Box, Button, Typography } from '@mui/material'
 
-import TestimonyCard, { Testimony } from './TestimonyCard'
+import TestimonyCard from './TestimonyCard'
 
-const testimonies: Testimony[] = [
-  {
-    id: '1',
-    imageUrl: '/Overlay.svg',
-    name: 'Scott Smith',
-    role: 'Fire Equipment Expert',
-    message:
-      'The wildland fire training I received was instrumental in preparing me for the 2023 fire season.',
-  },
-  {
-    id: '2',
-    imageUrl: '/Overlay.svg',
-    name: 'Maria Lopez',
-    role: 'Community Volunteer',
-    message:
-      "Our entire staff completed OC Wildland Fire's CPR training — highly recommend.",
-  },
-  {
-    id: '3',
-    imageUrl: '/Overlay.svg',
-    name: 'Derek Chen',
-    role: 'Wildfire Analyst',
-    message:
-      'The data tools from OC Wildland have revolutionized how we monitor fire risk conditions.',
-  },
-  {
-    id: '4',
-    imageUrl: '/Overlay.svg',
-    name: 'Jessica Nguyen',
-    role: 'Safety Coordinator',
-    message:
-      'Hands-on instruction gave me the confidence to handle real wildfire scenarios.',
-  },
-]
+export interface Testimony {
+  id: string
+  name: string
+  role?: string
+  message?: string
+  imageUrl?: string
+}
 
 function TestimonyCarousel() {
+  const [testimonies, setTestimonies] = useState<Testimony[]>([])
   const [index, setIndex] = useState(0)
-  const visible = testimonies.slice(index, index + 2)
+
+  // Only show 2 cards and increment index by 2 (Can change if it just needs to be one)
+    const visible = testimonies.slice(index, index + 2)
   const next = () =>
     setIndex((prev) => (prev + 2 >= testimonies.length ? 0 : prev + 2))
   const prev = () =>
     setIndex((prev) => (prev - 2 < 0 ? testimonies.length - 2 : prev - 2))
+
+// Load Testimonies from Backend on mount
+  useEffect(() => {
+    fetch("http://localhost:3000/api/graphql", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        query: `
+          query {
+            testimonies {
+              id
+              name
+              role
+              message
+              imageUrl
+            }
+          }
+        `,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setTestimonies(data.data.testimonies)
+      })
+      .catch((err) => console.error("Error fetching testimonies:", err))
+  }, [])
+
+
+  // Automatically increment the carousel
+  useEffect(() => {
+  const interval = setInterval(next, 7000)
+  return () => clearInterval(interval)
+}, [testimonies])
+
+
 
   return (
     <Box className="text-center mt-12">
@@ -56,26 +67,26 @@ function TestimonyCarousel() {
       </Typography>
 
       <div className="flex flex-wrap justify-center gap-8 mt-10 max-w-5xl mx-auto">
-        {visible.map((t) => (
-          <div key={t.id} className="w-full md:w-[45%]">
-            <TestimonyCard testimony={t} />
+        {visible.length > 0 && visible.map((data) => (
+          <div key={data.id} className="w-full md:w-[45%]">
+            <TestimonyCard testimony={data} />
           </div>
         ))}
       </div>
 
       <div className="flex justify-center gap-4 mt-6">
-        <button
+        <Button
           onClick={prev}
           className="px-4 py-2 border rounded-md hover:bg-gray-100"
         >
           Prev
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={next}
           className="px-4 py-2 border rounded-md hover:bg-gray-100"
         >
           Next
-        </button>
+        </Button>
       </div>
     </Box>
   )
