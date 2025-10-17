@@ -1,7 +1,6 @@
-import { Box, Typography, Card, CardContent } from '@mui/material'
+import { Box } from '@mui/material'
 
 import TestimonyCarousel from "../components/TestimonyCarousel"
-import TestimonyCard from '../components/TestimonyCard'
 
 function About() {
   return (
