@@ -77,13 +77,11 @@ function TestimonyCarousel() {
       <div className="flex justify-center gap-4 mt-6">
         <Button
           onClick={prev}
-          className="px-4 py-2 border rounded-md hover:bg-gray-100"
         >
           Prev
         </Button>
         <Button
           onClick={next}
-          className="px-4 py-2 border rounded-md hover:bg-gray-100"
         >
           Next
         </Button>
