@@ -38,6 +38,45 @@ export const theme = createTheme({
     },
   },
   components: {
+    MuiTextField: {
+      defaultProps: {
+        // Use small by default for a slightly shorter input height
+        size: 'small',
+        variant: 'outlined',
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: 8,
+        },
+        // Control the vertical padding which effectively sets input height
+        input: {
+          paddingTop: 10,
+          paddingBottom: 10,
+        },
+        // Fine-tune for small size specifically
+        sizeSmall: {
+          '& .MuiOutlinedInput-input': {
+            paddingTop: 8,
+            paddingBottom: 8,
+          },
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        // Adjust label position for outlined variant to better align with custom paddings
+        root: {
+          '&.MuiInputLabel-outlined': {
+            transform: 'translate(14px, 10px) scale(1)',
+          },
+          '&.MuiInputLabel-shrink': {
+            transform: 'translate(14px, -8px) scale(0.75)',
+          },
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
