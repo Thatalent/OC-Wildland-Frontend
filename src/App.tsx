@@ -13,6 +13,7 @@ import Store from "./pages/Store";
 import Training from "./pages/Training";
 import Terms from "./pages/Terms";
 import WildlandsTraining from "./pages/WildlandsTraining";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/wildlandstraining" element={<WildlandsTraining />} />
         </Routes>
       </Container>
+      <Footer />
     </Box>
   );
 }
