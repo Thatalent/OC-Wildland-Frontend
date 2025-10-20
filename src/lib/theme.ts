@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material/styles'
 export const theme = createTheme({
   palette: {
     primary: {
-      main: '#3b82f6',
+      main: '#1f262e',
       dark: '#1d4ed8',
       light: '#60a5fa',
     },
@@ -36,6 +36,10 @@ export const theme = createTheme({
     h3: {
       fontWeight: 600,
     },
+    h6: {
+      fontWeight: 500,
+      fontSize: '14px',
+    },
   },
   components: {
     MuiButton: {
@@ -43,6 +47,10 @@ export const theme = createTheme({
         root: {
           textTransform: 'none',
           borderRadius: 8,
+          backgroundColor: 'transparent',
+          '&:hover': {
+          backgroundColor: 'transparent',
+        },
         },
       },
     },

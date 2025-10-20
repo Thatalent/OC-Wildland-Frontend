@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Container, Box } from "@mui/material";
-import Header from "./pages/Header";
+import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Consultation from "./pages/Consultation";
@@ -17,7 +17,7 @@ import WildlandsTraining from "./pages/WildlandsTraining";
 function App() {
   return (
     <Box className="min-h-screen bg-gray-50">
-      <Header />
+      <Navigation />
 
       <Container maxWidth="lg" className="py-8">
         <Routes>
