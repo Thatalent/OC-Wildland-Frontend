@@ -118,10 +118,10 @@ function Contact() {
                 <Typography
                   variant="h3"
                   component="h1"
-                  sx={{ mb: 1, fontWeight: 600, fontSize: 22, color: 'text.primary', display: 'flex', alignItems: 'center', gap: 1 }}
+                  sx={{ mb: 1, fontWeight: 600, fontSize: 22, color: 'text.primary', display: 'flex', alignItems: 'center', gap: 1, letterSpacing: '-1.0px' }}
                 >
-                  <EmailOutlinedIcon sx={{ fontSize: 24, color: 'common.black' }} />
-                  Send Us a message
+                  <EmailOutlinedIcon sx={{ fontSize: 24, color: 'common.black', transform: 'translateY(2.2px)' }} />
+                  Send Us a Message
                 </Typography>
               </Grid>
               <Grid item xs={12} md={12}>
@@ -129,7 +129,7 @@ function Contact() {
                   Your full name
                 </Typography>
                 <TextField
-                  placeholder="Your full names"
+                  placeholder="Your full name"
                   variant="outlined"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -210,17 +210,31 @@ function Contact() {
                   }}
                   error={Boolean(touched.message && errors.message)}
                   helperText={touched.message && errors.message}
-                  minRows={4}
                   multiline
                   required
                   fullWidth
                   autoComplete="off"
-                  sx={{ mt: 1 }}
+                  sx={{
+                    mt: 1,
+                    // Fix the outer field height to 98px
+                    '& .MuiOutlinedInput-root': {
+                      height: 98,
+                      alignItems: 'flex-start',
+                    },
+                    // Make the textarea fill the height cleanly
+                    '& .MuiOutlinedInput-inputMultiline': {
+                      height: '100%',
+                      padding: '12px 14px',
+                      boxSizing: 'border-box',
+                      resize: 'none',
+                      overflow: 'auto',
+                    },
+                  }}
                 />
               </Grid>
 
               <Grid item xs={12}>
-              <Box sx={{ mt: 2 }}>
+              <Box sx={{ mt: 0 }}>
                   <Button
                     type="submit"
                     variant="contained"
