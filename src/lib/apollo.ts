@@ -1,7 +1,8 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
 
 const httpLink = createHttpLink({
-  uri: import.meta.env.VITE_GRAPHQL_ENDPOINT || 'http://localhost:8080/graphql',
+  // Keystone default GraphQL path is /api/graphql
+  uri: import.meta.env.VITE_GRAPHQL_ENDPOINT || 'http://localhost:4000/api/graphql',
 })
 
 export const apolloClient = new ApolloClient({
