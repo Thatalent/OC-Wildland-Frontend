@@ -1,9 +1,5 @@
 import { Box, Typography, IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import YouTubeIcon from "@mui/icons-material/YouTube";
 
 interface FooterProps {
   assets: Record<string, string>;
@@ -24,16 +20,40 @@ function Footer({assets}: FooterProps) {
               prepared to help others in emergency situations.
             </Typography>
           <Box sx={{display: 'flex', gap: '16px'}}>
-            <IconButton sx={{width: '20px', height: '20px'}}>
+            <IconButton
+              component="a"
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{width: '20px', height: '20px'}}
+            >
               <img src={assets["Facebook Logo"]} alt="Facebook Logo" style={{ width: '20px', height: '20px' }} />
             </IconButton>
-            <IconButton sx={{width: '20px', height: '20px'}}>
+            <IconButton
+              component="a"
+              href="https://www.x.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{width: '20px', height: '20px'}}
+            >
               <img src={assets["X Logo"]} alt="X Logo" style={{ width: '15px', height: '15px' }}/>
             </IconButton>
-            <IconButton sx={{width: '20px', height: '20px'}}>
+            <IconButton
+              component="a"
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{width: '20px', height: '20px'}}
+            >
               <img src={assets["Instagram Logo"]} alt="Instagram Logo" style={{ width: '20px', height: '20px' }}/>
             </IconButton>
-            <IconButton sx={{width: '20px', height: '20px'}}>
+            <IconButton
+              component="a"
+              href="https://www.youtube.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{width: '20px', height: '20px'}}
+            >
               <img src={assets["YouTube Logo"]} alt="YouTube Logo" style={{ width: '20px', height: '20px' }}/>
             </IconButton>
           </Box>
