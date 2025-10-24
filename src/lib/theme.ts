@@ -19,13 +19,7 @@ export const theme = createTheme({
   },
   typography: {
     fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
+      '"Inter", sans-serif',
     ].join(','),
     h1: {
       fontWeight: 600,
