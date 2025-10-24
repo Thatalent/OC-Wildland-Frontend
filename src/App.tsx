@@ -19,7 +19,7 @@ function App() {
     <Box className="min-h-screen bg-gray-50">
       <Header />
 
-      <Container maxWidth="lg" className="py-8">
+      <Container maxWidth="lg" className="mx-0-auto">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
