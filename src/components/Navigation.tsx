@@ -2,12 +2,14 @@ import { AppBar, Box, Toolbar, Typography, Button, Menu, MenuItem } from "@mui/m
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import Badge from '@mui/material/Badge';
 
 interface NavigationProps {
   assets: Record<string, string>;
 }
 
 function Navigation ({assets}: NavigationProps) {
+  const [cartCount, setCartCount] = useState<number>(6);
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const [menuName, setMenuName] = useState<string | null>(null);
 
@@ -85,7 +87,9 @@ function Navigation ({assets}: NavigationProps) {
         </Box>
         <Box display="flex" alignItems="center" sx={{gap: "16px"}}>
           <Button component={Link} to="/Store" sx={{minWidth:"40px", width: "40px", height: "40px", borderRadius: "6px", transition: "background-color 0.3s ease", "&:hover": {backgroundColor: "rgb(249, 107, 6)", "& img": {filter: "invert(1) brightness(2)"}}}}>
+            <Badge badgeContent={cartCount} overlap="circular" anchorOrigin={{vertical: "top", horizontal: "right"}} sx={{"& .MuiBadge-badge": {backgroundColor: "#f34e1b", color: "#fff", minWidth: "12px", height: "12px", padding: "0", borderRadius: "50%", fontSize: "10px", fontWeight: "600", lineHeight: "20px", alignItems: "center", justifyContent: "center"}}}>
             <img className="w-4 h-4" src={assets["Cart Icon"]} alt="Shopping Cart Icon"/>
+            </Badge>
           </Button>
           <Button sx={{minWidth:"40px", width: "40px", height: "40px", borderRadius: "6px", transition: "background-color 0.3s ease", "&:hover": {backgroundColor: "rgb(249, 107, 6)", "& img": {filter: "invert(1) brightness(2)"}}}}>
             <img className="w-4 h-4" src={assets["Search Icon"]} alt="Search Icon"/>
