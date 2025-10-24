@@ -46,7 +46,7 @@ export const theme = createTheme({
       fontWeight: 400,
       lineHeight: "20px",
       color: "rgba(255, 255, 255, .8)",
-      fontSize: '14.67px',
+      fontSize: '13.67px',
     },
     h6: {
       fontWeight: 500,

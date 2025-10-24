@@ -8,9 +8,9 @@ interface FooterProps {
 
 function Footer({assets}: FooterProps) {
   return (
-    <Box sx={{ backgroundColor: '#1f262e', color: '#fff', py: '48px', px: '80px'}}>
-      <Box sx={{ display: 'flex', gap: '32px', mb: '32px', justifyContent: 'space-between' }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '592px'}}>
+    <Box sx={{ backgroundColor: '#1f262e', color: '#fff', py: '48px', px: {xs: '16px', md: '80px'}}}>
+      <Box sx={{ display: 'flex', gap: '32px', mb: '32px', justifyContent: 'space-between', flexDirection: {xs: 'column', md: 'row'}}}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px', width: {sx: '358px', md:'592px'}}}>
           <Box>
             <Link to="/">
             <img src={assets["OC Wildland Footer Logo"]} alt="OC-Wildland Logo" style={{ width: '260px', height: '45px' }} />
@@ -64,8 +64,8 @@ function Footer({assets}: FooterProps) {
           <Typography mb="16px">
             Quick Links
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '280px' }}>
-            <Typography component={Link} to="/About" variant="h5" className="no-underline">About us</Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '280px'}}>
+            <Typography component={Link} to="/About" variant="h5" className="no-underline block">About us</Typography>
             <Typography component={Link} to="/Store" variant="h5" className="no-underline">Store</Typography>
             <Typography component={Link} to="/Contact" variant="h5" className="no-underline">Contact</Typography>
             <Typography component={Link} to="/FAQ" variant="h5" className="no-underline">FAQs</Typography>
@@ -82,11 +82,11 @@ function Footer({assets}: FooterProps) {
           </Box>
         </Box>
       </Box>
-        <Box sx={{display: "flex", justifyContent: "space-between", py:"32px", borderTop: "1px solid white", borderBottom: "1px solid white"}}>
+        <Box sx={{display: "flex", flexDirection: {xs: "column", md: "row"}, gap: {xs: "16px"}, justifyContent: "space-between", py: "32px", borderTop: "1px solid rgba(255, 255, 255, .1)", borderBottom: "1px solid rgba(255, 255, 255, .1)"}}>
           <Typography variant="h5" sx={{color: "rgba(255, 255, 255, .6)"}}>
             © 2025 OC-Wildland Fire & CPR Training. All rights reserved.
           </Typography>
-          <Box  sx={{display: "flex", gap: "24px"}}>
+          <Box  sx={{display: "flex", gap: {xs: "3px", md: "24px"}, flexDirection: {xs: 'column', md: 'row'}, alignItems: {xs: 'flex-start', md: 'center'}}}>
             <Typography variant="h5" sx={{color: "rgba(255, 255, 255, .6)"}}>
               (949) 249-1227
             </Typography>
@@ -102,8 +102,8 @@ function Footer({assets}: FooterProps) {
           <Typography variant="h4" sx={{mb: '16px'}}><span className="font-bold">American Heart Association Disclaimer:</span> This organization is an authorized American Heart Association Training Center. The American Heart Association strongly promotes knowledge and proficiency in BLS, ACLS,
             and PALS and has developed instructional materials for this purpose.</Typography>
           <Typography variant="h4"><span className="font-bold">Legal Disclaimer:</span> Training completion does not guarantee employment or certification maintenance. Students are responsible for maintaining current certifications and following all applicable regulations.</Typography>
-          <Box sx={{textAlign: "center", mt: "16px"}}>
-            <Typography component={Link} to="/PrivacyPolicy" variant="h4" sx={{mr: "16px"}}>
+          <Box sx={{display: 'flex', flexDirection: {xs: "column", md: 'row'}, gap: {xs: "12px", md: "16px"}, justifyContent: {xs: "flex-start", md: "center"}, mt: "16px"}}>
+            <Typography component={Link} to="/PrivacyPolicy" variant="h4">
               Privacy Policy
             </Typography>
             <Typography component={Link} to="/Terms" variant="h4">
