@@ -1,14 +1,17 @@
 import { AppBar, Box, Toolbar, Typography, Button, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../assets/Logo.jpg";
 import Down from "../assets/DownArrow.svg"
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import SearchIcon from "@mui/icons-material/Search";
 
-function Navigation () {
-   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
+interface NavigationProps {
+  assets: Record<string, string>;
+}
+
+function Navigation ({assets}: NavigationProps) {
+  const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const [menuName, setMenuName] = useState<string | null>(null);
+
+  console.log(assets);
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>, name: string) => {
     setMenuAnchor(event.currentTarget);
@@ -27,7 +30,7 @@ function Navigation () {
   }}>
       <Toolbar className="flex justify-between items-center !px-[112px]">
         <Box display="flex" alignItems="center">
-          <img src={Logo} alt="OC-Wildland Logo" style={{width: "174", height: "44"}}/>
+          <img src={assets["OC Wildland Navbar Logo"]} alt="OC-Wildland Logo" style={{width: "174", height: "44"}}/>
         </Box>
         <Box display="flex" sx={{gap: "32px", alignItems: "center", justifyContent: "center"}}>
           <Typography
@@ -39,7 +42,7 @@ function Navigation () {
           >
             About
           </Typography>
-          <Button sx={{'&:hover': {color: '#F34E1B'}, display: 'flex', alignItems: 'center', gap: '4px'}} onClick={(e) => handleMenuOpen(e, "resources")}>Training <img src={Down} alt="Down Arrow"></img></Button>
+          <Button sx={{'&:hover': {color: '#F34E1B', "& img": {filter: "invert(46%) sepia(83%) saturate(3092%) hue-rotate(352deg) brightness(99%) contrast(97%)"}}, display: 'flex', alignItems: 'center', gap: '4px'}} onClick={(e) => handleMenuOpen(e, "resources")}>Training <img src={Down} alt="Down Arrow" className="transition-all duration-200"></img></Button>
 
           <Menu
             anchorEl={menuName === "resources" ? menuAnchor : null}
@@ -61,8 +64,8 @@ function Navigation () {
           >
             Store
           </Typography>
-          <Button sx={{'&:hover': {color: '#F34E1B'}, display: 'flex', alignItems: 'center', gap: '4px'}} onClick={(e) => handleMenuOpen(e, "contact")}>
-            Contact<img src={Down} alt="Down Arrow"></img>
+          <Button sx={{'&:hover': {color: '#F34E1B', "& img": {filter: "invert(46%) sepia(83%) saturate(3092%) hue-rotate(352deg) brightness(99%) contrast(97%)"}}, display: 'flex', alignItems: 'center', gap: '4px'}} onClick={(e) => handleMenuOpen(e, "contact")}>
+            Contact<img src={Down} alt="Down Arrow" className="transition-all duration-200"></img>
           </Button>
 
           <Menu
@@ -77,8 +80,12 @@ function Navigation () {
 
         </Box>
         <Box display="flex" alignItems="center" sx={{gap: "16px"}}>
-          <ShoppingCartIcon></ShoppingCartIcon>
-          <SearchIcon></SearchIcon>
+          <Button component={Link} to="/Store" sx={{minWidth:"40px", width: "40px", height: "40px", borderRadius: "6px", transition: "background-color 0.3s ease", "&:hover": {backgroundColor: "rgb(249, 107, 6)", "& img": {filter: "invert(1) brightness(2)"}}}}>
+            <img className="w-4 h-4" src={assets["Cart Icon"]} alt="Shopping Cart Icon"/>
+          </Button>
+          <Button sx={{minWidth:"40px", width: "40px", height: "40px", borderRadius: "6px", transition: "background-color 0.3s ease", "&:hover": {backgroundColor: "rgb(249, 107, 6)", "& img": {filter: "invert(1) brightness(2)"}}}}>
+            <img className="w-4 h-4" src={assets["Search Icon"]} alt="Search Icon"/>
+          </Button>
           <Button sx={{color: "rgb(255,255,255)", width: "96px", height: "36px", padding: "0", background: "linear-gradient(103.54deg, #EE2B2B 0%, #F34E1B 50%, #F8C630 100%)", boxShadow: "0px 10px 30px -10px rgba(243, 78, 27, 0.3)"}}>
             Enroll now
           </Button>

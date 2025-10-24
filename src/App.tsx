@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { Container, Box } from "@mui/material";
+import { useQuery } from "@apollo/client";
+import { GET_WILDLAND_IMAGES } from "./graphql/queries";
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -16,9 +18,19 @@ import WildlandsTraining from "./pages/WildlandsTraining";
 import Footer from "./components/Footer";
 
 function App() {
+  const { data, loading, error } = useQuery(GET_WILDLAND_IMAGES);
+  const assets: Record<string, string> = {};
+
+  if (loading) return null;
+  if (error) return <p>Error loading assets</p>;
+
+  data.images.forEach((img: any) => {
+    assets[img.name] = img.imageUrl?.url;
+  });
+
   return (
     <Box className="min-h-screen bg-gray-50">
-      <Navigation />
+      <Navigation assets={assets}/>
 
       <Container maxWidth="lg" className="py-8">
         <Routes>
@@ -36,7 +48,7 @@ function App() {
           <Route path="/wildlandstraining" element={<WildlandsTraining />} />
         </Routes>
       </Container>
-      <Footer />
+      <Footer assets={assets}/>
     </Box>
   );
 }

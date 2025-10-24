@@ -36,6 +36,18 @@ export const theme = createTheme({
     h3: {
       fontWeight: 600,
     },
+    h4: {
+      fontWeight: 400,
+      fontSize: '12px',
+      lineHeight: '16px',
+      color: 'rgba(255, 255, 255, .5)',
+    },
+    h5: {
+      fontWeight: 400,
+      lineHeight: "20px",
+      color: "rgba(255, 255, 255, .8)",
+      fontSize: '14.67px',
+    },
     h6: {
       fontWeight: 500,
       fontSize: '14px',
