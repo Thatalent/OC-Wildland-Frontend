@@ -9,10 +9,12 @@ interface FooterProps {
 function Footer({assets}: FooterProps) {
   return (
     <Box sx={{ backgroundColor: '#1f262e', color: '#fff', py: '48px', px: '80px'}}>
-      <Box sx={{ display: 'flex', gap: '32px', mb: '32px' }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px'}}>
+      <Box sx={{ display: 'flex', gap: '32px', mb: '32px', justifyContent: 'space-between' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '592px'}}>
           <Box>
+            <Link to="/">
             <img src={assets["OC Wildland Footer Logo"]} alt="OC-Wildland Logo" style={{ width: '260px', height: '45px' }} />
+            </Link>
           </Box>
             <Typography variant="h5" sx={{maxWidth: '448px' }}>
               Dedicated to providing the safety and CPR training our community
@@ -62,7 +64,7 @@ function Footer({assets}: FooterProps) {
           <Typography mb="16px">
             Quick Links
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '280px' }}>
             <Typography component={Link} to="/About" variant="h5" className="no-underline">About us</Typography>
             <Typography component={Link} to="/Store" variant="h5" className="no-underline">Store</Typography>
             <Typography component={Link} to="/Contact" variant="h5" className="no-underline">Contact</Typography>
@@ -73,7 +75,7 @@ function Footer({assets}: FooterProps) {
           <Typography>
             Training
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', mt: '16px' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', mt: '16px', width: '280px' }}>
             <Typography component={Link} to="/Training" variant="h5" className="no-underline">Wildland Fire</Typography>
             <Typography component={Link} to="/CPR" variant="h5" className="no-underline">American Heart Association</Typography>
             <Typography component={Link} to="/CustomTraining" variant="h5" className="no-underline">Custom & Group Training</Typography>

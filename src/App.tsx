@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Container, Box } from "@mui/material";
+import { Container, Box, Typography } from "@mui/material";
 import { useQuery } from "@apollo/client";
 import { GET_WILDLAND_IMAGES } from "./graphql/queries";
 import Navigation from "./components/Navigation";
@@ -21,8 +21,8 @@ function App() {
   const { data, loading, error } = useQuery(GET_WILDLAND_IMAGES);
   const assets: Record<string, string> = {};
 
-  if (loading) return null;
-  if (error) return <p>Error loading assets</p>;
+  if (loading) return <Typography>Loading...</Typography>
+  if (error) return <Typography color="error">Error: {error.message}</Typography>
 
   data.images.forEach((img: any) => {
     assets[img.name] = img.imageUrl?.url;

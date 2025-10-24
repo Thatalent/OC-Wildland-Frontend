@@ -1,7 +1,7 @@
 import { AppBar, Box, Toolbar, Typography, Button, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Down from "../assets/DownArrow.svg"
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 interface NavigationProps {
   assets: Record<string, string>;
@@ -30,7 +30,9 @@ function Navigation ({assets}: NavigationProps) {
   }}>
       <Toolbar className="flex justify-between items-center !px-[112px]">
         <Box display="flex" alignItems="center">
+          <Link to="/">
           <img src={assets["OC Wildland Navbar Logo"]} alt="OC-Wildland Logo" style={{width: "174", height: "44"}}/>
+          </Link>
         </Box>
         <Box display="flex" sx={{gap: "32px", alignItems: "center", justifyContent: "center"}}>
           <Typography
@@ -42,7 +44,9 @@ function Navigation ({assets}: NavigationProps) {
           >
             About
           </Typography>
-          <Button sx={{'&:hover': {color: '#F34E1B', "& img": {filter: "invert(46%) sepia(83%) saturate(3092%) hue-rotate(352deg) brightness(99%) contrast(97%)"}}, display: 'flex', alignItems: 'center', gap: '4px'}} onClick={(e) => handleMenuOpen(e, "resources")}>Training <img src={Down} alt="Down Arrow" className="transition-all duration-200"></img></Button>
+          <Button sx={{'&:hover': {color: '#F34E1B'}, display: 'flex', alignItems: 'center', gap: '4px'}} onClick={(e) => handleMenuOpen(e, "resources")}>
+            Training <KeyboardArrowDownIcon sx={{fontSize: "medium"}}/>
+          </Button>
 
           <Menu
             anchorEl={menuName === "resources" ? menuAnchor : null}
@@ -64,8 +68,8 @@ function Navigation ({assets}: NavigationProps) {
           >
             Store
           </Typography>
-          <Button sx={{'&:hover': {color: '#F34E1B', "& img": {filter: "invert(46%) sepia(83%) saturate(3092%) hue-rotate(352deg) brightness(99%) contrast(97%)"}}, display: 'flex', alignItems: 'center', gap: '4px'}} onClick={(e) => handleMenuOpen(e, "contact")}>
-            Contact<img src={Down} alt="Down Arrow" className="transition-all duration-200"></img>
+          <Button sx={{'&:hover': {color: '#F34E1B'}, display: 'flex', alignItems: 'center', gap: '4px'}} onClick={(e) => handleMenuOpen(e, "contact")}>
+            Contact <KeyboardArrowDownIcon sx={{fontSize: "medium"}}/>
           </Button>
 
           <Menu
