@@ -54,3 +54,18 @@ export const UPDATE_WILDLAND = gql`
     }
   }
 `
+
+export const GET_PROGRAMS = gql`
+query GetPrograms {
+  programs {
+    classesCount
+    description
+    id
+    name
+    classes {
+      id
+      name
+      price
+    }
+  }
+}`

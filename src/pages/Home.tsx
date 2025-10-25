@@ -1,5 +1,6 @@
 import { Box, Typography, Card, CardContent, Button, Grid } from '@mui/material'
 import { useQuery, gql } from '@apollo/client'
+import { GET_PROGRAMS } from '../graphql/queries'
 
 // Example GraphQL query - replace with your actual schema
 const GET_WILDLAND_DATA = gql`
@@ -14,7 +15,7 @@ const GET_WILDLAND_DATA = gql`
 `
 
 function Home() {
-  // const { loading, error, data } = useQuery(GET_WILDLAND_DATA)
+  const { loading, error, data } = useQuery(GET_PROGRAMS)
 
   if (loading) return <Typography>Loading...</Typography>
   if (error) return <Typography color="error">Error: {error.message}</Typography>
@@ -70,7 +71,7 @@ function Home() {
           </Card>
         </Grid>
 
-        {data?.wildlands && (
+        {/* {data?.wildlands && (
           <Grid item xs={12}>
             <Card>
               <CardContent className="p-6">
@@ -86,6 +87,33 @@ function Home() {
                           <Typography color="textSecondary">{wildland.location}</Typography>
                           <Typography variant="body2" className="mt-2">
                             Status: {wildland.status}
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </Grid>
+                  ))}
+                </Grid>
+              </CardContent>
+            </Card>
+          </Grid>
+        )} */}
+
+        {data?.programs && (
+          <Grid item xs={12}>
+            <Card>
+              <CardContent className="p-6">
+                <Typography variant="h5" component="h2" className="mb-4 text-gray-800">
+                  Programs
+                </Typography>
+                <Grid container spacing={2}>
+                  {data.programs.map((program: any) => (
+                    <Grid item xs={12} sm={6} md={4} key={program.id}>
+                      <Card variant="outlined">
+                        <CardContent>
+                          <Typography variant="h6">{program.name}</Typography>
+                          <Typography color="textSecondary">{program.description}</Typography>
+                          <Typography variant="body2" className="mt-2">
+                            Classes Count: {program.classesCount}
                           </Typography>
                         </CardContent>
                       </Card>

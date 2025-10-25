@@ -8,7 +8,7 @@ export default defineConfig({
     port: 3000,
     open: true,
     proxy: {
-      "/api": "http://localhost:8800",
+      "/graphql": "http://localhost:8080/api/graphql",
     }
   },
   build: {
