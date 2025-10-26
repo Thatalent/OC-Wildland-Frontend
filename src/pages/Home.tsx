@@ -1,5 +1,6 @@
 import { Box, Typography, Card, CardContent, Button, Grid } from '@mui/material'
 import { useQuery, gql } from '@apollo/client'
+import { KPIStats } from '../components/KPIStats'
 
 // Example GraphQL query - replace with your actual schema
 const GET_WILDLAND_DATA = gql`
@@ -28,6 +29,8 @@ function Home() {
       <Typography variant="h6" className="mb-6 text-gray-600">
         Monitoring and managing Orange County's wildland areas
       </Typography>
+
+      <KPIStats />
 
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
