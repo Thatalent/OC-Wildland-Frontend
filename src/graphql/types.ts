@@ -44,3 +44,12 @@ export interface UpdateWildlandInput {
   area?: number
   riskLevel?: RiskLevel
 }
+
+export interface Program {
+  id: string;
+  title: string;
+  slug: string;
+  summary?: string;
+  price?: number;
+  thumbnail?: { url: string; width?: number; height?: number } | null;
+}
