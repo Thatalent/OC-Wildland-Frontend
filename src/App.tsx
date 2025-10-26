@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Container, AppBar, Toolbar, Typography, Box } from '@mui/material'
 import Home from './pages/Home'
 import About from './pages/About'
+import Header from './pages/Header'
 
 function App() {
   return (
