@@ -38,13 +38,37 @@ export const theme = createTheme({
     },
   },
   components: {
-    MuiButton: {
+   MuiButton: {
+      variants: [
+        {
+          props: { variant: 'primary' as any },
+          style: {
+            background:
+              'linear-gradient(103.54deg, #EE2B2B 0%, #F34E1B 50%, #F8C630 100%)',
+            color: '#fff',
+            borderRadius: 8,
+            textTransform: 'none',
+            '&:hover': { opacity: 0.9 },
+          },
+        },
+        {
+          props: { variant: 'secondary' as any },
+          style: {
+            backgroundColor: '#F34E1B',
+            color: '#fff',
+            borderRadius: 6,
+            textTransform: 'none',
+            '&:hover': {
+              backgroundColor: '#f34d1b8a',
+            },
+          },
+        },
+      ],
       styleOverrides: {
         root: {
-          textTransform: 'none',
           borderRadius: 8,
-          background: 'linear-gradient(103.54deg, #EE2B2B 0%, #F34E1B 50%, #F8C630 100%)',
-          color: '#fff',
+          textTransform: 'none',
+          fontWeight: 500,
         },
       },
     },
