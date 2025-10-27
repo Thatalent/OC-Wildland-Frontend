@@ -1,5 +1,5 @@
 import { Box, Typography, Card, CardContent, Button, Grid } from '@mui/material'
-import { useQuery, gql } from '@apollo/client'
+import { gql } from '@apollo/client'
 
 // Example GraphQL query - replace with your actual schema
 const GET_WILDLAND_DATA = gql`
@@ -13,11 +13,25 @@ const GET_WILDLAND_DATA = gql`
   }
 `
 
-function Home() {
-  const { loading, error, data } = useQuery(GET_WILDLAND_DATA)
+export const GET_TEAM_MEMBERS = gql`
+  query GetTeamMembers {
+    teamMembers {
+      id
+      name
+      title
+      roleDescription
+      avatar {
+        url
+      }
+    }
+  }
+`;
 
-  if (loading) return <Typography>Loading...</Typography>
-  if (error) return <Typography color="error">Error: {error.message}</Typography>
+function Home() {
+  // const { loading, error, data } = useQuery(GET_WILDLAND_DATA)
+
+  // if (loading) return <Typography>Loading...</Typography>
+  // if (error) return <Typography color="error">Error: {error.message}</Typography>
 
   return (
     <Box>
@@ -70,7 +84,7 @@ function Home() {
           </Card>
         </Grid>
 
-        {data?.wildlands && (
+        {/* {data?.wildlands && (
           <Grid item xs={12}>
             <Card>
               <CardContent className="p-6">
@@ -95,7 +109,7 @@ function Home() {
               </CardContent>
             </Card>
           </Grid>
-        )}
+        )} */}
       </Grid>
     </Box>
   )
