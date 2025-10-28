@@ -4,7 +4,7 @@ import ProgramFilter from '../components/ProgramFilter'
 
 function CPR() {
   return (
-    <Box>
+    <Box className="p-0">
       <ProgramFilter programVariant="cpr" />
     </Box>
   )

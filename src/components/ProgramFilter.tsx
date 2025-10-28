@@ -58,9 +58,9 @@ function ProgramFilter({programVariant}: ProgramFilterProps) {
   }, [])
 
   return (
-    <Box className="text-center mt-12">
+    <Box className="text-left mt-12">
       <Typography variant="h4">All CPR & First Aid Classes</Typography>
-      <div>
+      <div className='flex justify-flex-start gap-8'>
         <select>
             <option>All Locations</option>
             <option>Rancho Cordova</option>
@@ -87,7 +87,7 @@ function ProgramFilter({programVariant}: ProgramFilterProps) {
             <option>Next Year</option>
         </select>
       </div>
-      <div className="flex flex-wrap justify-center gap-8 mt-12">
+      <div className="flex flex-wrap gap-8 mt-12">
         {programs.length > 0 ? (
           programs.map((program) => (
             <ProgramCard key={program.id} program={program} />

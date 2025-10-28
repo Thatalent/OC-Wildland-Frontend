@@ -8,7 +8,7 @@ interface ProgramCardProps {
 
 function ProgramCard({program}: ProgramCardProps) {
   return (
-    <Card className="flex p-[25px] text-left min-h-[218px] max-w-[592px]">
+    <Card className="flex p-[25px] text-left min-h-[146px] max-w-[1368px]">
         <div>
             <div>
                 <h3 className="text-xl font-semibold">{program.title}</h3>
@@ -18,7 +18,7 @@ function ProgramCard({program}: ProgramCardProps) {
                 <Typography className='text-azure-50'>Date: {program.date}</Typography>
                 <Typography>{program.startTime} - {program.endTime}</Typography>
                 <Typography>{program.location}</Typography>
-                <Typography>{program.capacity}</Typography>
+                <Typography>{program.capacity} spots available</Typography>
             </div>
         </div>
         <div>
