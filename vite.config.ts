@@ -9,6 +9,7 @@ export default defineConfig({
     open: true,
     proxy: {
       "/api": "http://localhost:8080/api/graphql",
+      "/images": "https://localhost:8080/"
     }
   },
   build: {
