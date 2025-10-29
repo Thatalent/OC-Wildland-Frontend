@@ -32,7 +32,7 @@ export default function MeetTheTeam() {
         <h2 className="text-3xl font-bold text-gray-900 mb-4">
           Meet Our Expert Team
         </h2>
-        <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
+        <p className="text-[rgba(102,128,153,1)] mb-12 mx-auto">
           Our team members are experts with decades of real-world firefighting and
           emergency response experience
         </p>
@@ -74,7 +74,7 @@ export default function MeetTheTeam() {
               <p className="text-sm text-orange-600 font-medium mb-2">
                 {member.title || "Position"}
               </p>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-[rgba(102,128,153,1)] text-sm leading-relaxed">
                 {member.roleDescription || "Role description goes here."}
               </p>
             </div>

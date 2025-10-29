@@ -1,4 +1,5 @@
 import { Box, Typography, Card, CardContent } from '@mui/material'
+import MeetTheTeam from '../components/MeetTheTeam'
 
 function About() {
   return (
@@ -41,6 +42,8 @@ function About() {
           </ul>
         </CardContent>
       </Card>
+
+      <MeetTheTeam />
     </Box>
   )
 }
