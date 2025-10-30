@@ -1,5 +1,18 @@
+//data/state management and intermediary between frontend and backend graphql server
 import { gql } from '@apollo/client'
 
+//pulling from graphql api
+export const GET_PRODUCTS = gql`
+query GetProducts {
+  products {
+    img {
+      url
+    }
+    name
+    price
+  }
+}
+`
 // Example queries - replace with your actual GraphQL schema
 export const GET_WILDLANDS = gql`
   query GetWildlands {
