@@ -17,20 +17,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   //check to make sure it changes
 
   return (
-    <Card variant="outlined" sx={{ width: 424, height: 524 }} className="shadow-md">
-      <CardMedia component="img" sx={{ width: 424, height: 422 }} image={product.img.url} alt={product.name} />
-      <CardContent className="p-4 pt-2" >
+    <Card variant="outlined" sx={{ width: '100%', height: 524 }} className="shadow-md">
+      <CardMedia component="img" sx={{ width: '100%', height: 422 }} image={product.img.url} alt={product.name} />
+      <CardContent className="pb-2" sx={{ pt: 1 }}>
         <Typography variant="body1" sx={{ fontWeight: 500, fontSize: 15.5, color: '1F262E' }}>
           {product.name}
         </Typography>
 
 
       </CardContent >
-      <CardActions className="flex justify-between">
+      <CardActions className="flex justify-between" sx={{ p: 2, pt: 0 }}>
         <Typography sx={{ fontWeight: 700, fontSize: 17.72, color: '1F262E' }}>
           {formattedPrice}
         </Typography>
-        <Button sx={{ backgroundColor: '#F34E1B' }} size="medium"
+        <Button sx={{
+          backgroundColor: '#F34E1B', '&:hover': {
+            backgroundColor: '#F34E1B'
+          }
+        }}
+          size="medium"
           variant="contained">
           Add to Cart
         </Button>
