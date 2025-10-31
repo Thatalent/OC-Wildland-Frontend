@@ -16,6 +16,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   }).format(product.price);
   //check to make sure it changes
 
+  const handleAddToCart = () => {
+    console.log(`Add to cart clicked for product: ${product.name}`)
+  };
+
   return (
     <Card variant="outlined" sx={{ width: '100%', height: 524 }} className="shadow-md">
       <CardMedia component="img" sx={{ width: '100%', height: 422 }} image={product.img.url} alt={product.name} />
@@ -36,7 +40,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           }
         }}
           size="medium"
-          variant="contained">
+          variant="contained"
+          onClick={handleAddToCart}>
           Add to Cart
         </Button>
       </CardActions>
