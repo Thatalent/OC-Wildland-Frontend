@@ -1,70 +1,89 @@
-import { useQuery } from '@apollo/client';
-import { GET_KPI_STATS } from '../graphql/queries';
+import { useQuery } from '@apollo/client'
+import { GET_KPI_STATS } from '../graphql/queries'
 
-interface KPIStat {
-  id: string;
-  name: string;
-  groupsTrained: number;
-  clientSatisfaction: number;
-  yearsOfExperience: number;
-  trainedFirefighters: number;
-  successRate: number;
-  updatedAt: string;
+export type KPIStatItem = {
+  label: string
+  value: number | string
+  suffix?: string
+  prefix?: string
+  ariaValue?: string
 }
 
-export const KPIStats = () => {
-  const { loading, error, data } = useQuery(GET_KPI_STATS);
 
-  if (loading) return <div role="status" aria-live="polite">Loading statistics...</div>;
-  if (error) return <div role="alert">Error loading statistics</div>;
+// Data shape coming from CMS
+interface KPIFromCMS {
+  id: string
+  name: string
+  groupsTrained: number
+  clientSatisfaction: number
+  yearsOfExperience: number
+  trainedFirefighters: number
+  successRate: number
+  updatedAt: string
+}
 
-  const stats = data?.kpiStatistics[0] as KPIStat;
+type KPIPattern = 'customTraining' | 'homepage' | 'about'
 
-  if (!stats) return null;
+type KPIStatsProps = {
+  pattern: KPIPattern
+  className?: string
+}
 
-  const statItems = [
-    { label: 'Groups Trained', value: stats.groupsTrained, suffix: '+' },
-    { label: 'Client Satisfaction', value: stats.clientSatisfaction, suffix: '%' },
-    { label: 'Years of Experience', value: stats.yearsOfExperience, suffix: '' },
-    { label: 'Trained Firefighters', value: stats.trainedFirefighters, suffix: '+' },
-    { label: 'Success Rate', value: stats.successRate, suffix: '%' },
-  ];
+// Main KPIStats component - only fetches from CMS with predefined patterns
+export function KPIStats({ pattern, className }: KPIStatsProps) {
+  const { loading, error, data } = useQuery(GET_KPI_STATS)
+
+  if (loading) return <div role="status" aria-live="polite">Loading statistics...</div>
+  if (error) return <div role="alert">Error loading statistics</div>
+
+  const stats = (data?.kpiStatistics?.[0] ?? null) as KPIFromCMS | null
+  if (!stats) return null
+
+
+  const getKPIItems = (pattern: KPIPattern): KPIStatItem[] => {
+    switch (pattern) {
+      case 'customTraining':
+        return [
+          { label: 'Groups Trained', value: stats.groupsTrained, suffix: '+' },
+          { label: 'Client Satisfaction', value: stats.clientSatisfaction, suffix: '%' },
+          { label: 'Years of Experience', value: stats.yearsOfExperience },
+        ]
+      case 'homepage':
+      case 'about':
+        return [
+          { label: 'Trained Firefighters', value: stats.trainedFirefighters, suffix: '+' },
+          { label: 'Success Rate', value: stats.successRate, suffix: '%' },
+          { label: 'Years of Experience', value: stats.yearsOfExperience },
+        ]
+      default:
+        return []
+    }
+  }
+
+  const kpiItems = getKPIItems(pattern)
+
+  // Set section background for about page only, others default to white
+  const sectionBackgroundClass = pattern === 'about' ? 'bg-[rgba(241,245,249,0.5)]' : 'bg-white'
 
   return (
-    <section className="py-12 bg-white" aria-labelledby="kpi-stats-heading">
+    <section className={`py-12 ${sectionBackgroundClass} ${className ?? ''}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2
-            id="kpi-stats-heading"
-            className="text-3xl font-extrabold text-gray-900 sm:text-4xl"
-          >
-            Our Track Record
-          </h2>
-          <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
-            Key performance indicators that showcase our commitment to excellence
-          </p>
-        </div>
-
-        <dl className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
-          {statItems.map(({ label, value, suffix }) => (
-            <div
-              key={label}
-              className="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6"
-            >
-              <dt className="text-sm font-medium text-gray-500 truncate">
-                {label}
-              </dt>
-              <dd className="mt-1 text-3xl font-semibold text-indigo-600">
-                {value.toLocaleString()}{suffix}
+        <dl className="mt-2 grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3">
+          {kpiItems.map(({ label, value, prefix, suffix, ariaValue }) => (
+            <div key={label} className="px-4 py-6 text-center">
+              <dd className="m-0 text-3xl font-semibold tracking-tight text-[rgb(243,78,27)]">
+                <span aria-label={ariaValue}>
+                  {prefix}
+                  {typeof value === 'number' ? value.toLocaleString() : value}
+                  {suffix}
+                </span>
               </dd>
+              <dt className="mt-2 text-[15px] font-medium text-gray-500">{label}</dt>
             </div>
           ))}
         </dl>
-
-        <p className="mt-4 text-sm text-gray-500 text-center">
-          Last updated: {new Date(stats.updatedAt).toLocaleDateString()}
-        </p>
       </div>
     </section>
-  );
-};
+  )
+}
+

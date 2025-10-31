@@ -16,7 +16,7 @@ import WildlandsTraining from "./pages/WildlandsTraining";
 
 function App() {
   return (
-    <Box className="min-h-screen bg-gray-50">
+    <Box className="min-h-screen bg-white">
       <Header />
 
       <Container maxWidth="lg" className="py-8">
