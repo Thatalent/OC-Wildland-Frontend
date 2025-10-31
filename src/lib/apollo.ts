@@ -3,7 +3,7 @@ import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
 export const GRAPHQL_HTTP_URL = import.meta.env.VITE_GRAPHQL_ENDPOINT || '/api/graphql'
 
 const httpLink = createHttpLink({
-  uri: GRAPHQL_HTTP_URL,
+  uri: import.meta.env.VITE_GRAPHQL_ENDPOINT || 'http://localhost:3000/api',
 })
 
 export const apolloClient = new ApolloClient({
