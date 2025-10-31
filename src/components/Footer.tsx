@@ -83,17 +83,17 @@ function Footer({assets}: FooterProps) {
         </Box>
       </Box>
         <Box sx={{display: "flex", flexDirection: {xs: "column", md: "row"}, gap: {xs: "16px"}, justifyContent: "space-between", py: "32px", borderTop: "1px solid rgba(255, 255, 255, .1)", borderBottom: "1px solid rgba(255, 255, 255, .1)"}}>
-          <Typography variant="h5" sx={{color: "rgba(255, 255, 255, .6)"}}>
+          <Typography variant="h5" sx={{color: "rgba(255, 255, 255, .6)", textWrap: "nowrap", '@media (min-width: 900px) and (max-width: 1000px)': {fontSize: '12px'}}}>
             © 2025 OC-Wildland Fire & CPR Training. All rights reserved.
           </Typography>
           <Box  sx={{display: "flex", gap: {xs: "3px", md: "24px"}, flexDirection: {xs: 'column', md: 'row'}, alignItems: {xs: 'flex-start', md: 'center'}}}>
-            <Typography variant="h5" sx={{color: "rgba(255, 255, 255, .6)"}}>
+            <Typography variant="h5" sx={{color: "rgba(255, 255, 255, .6)", textWrap: "nowrap", '@media (min-width: 900px) and (max-width: 1000px)': {fontSize: '12px'}}}>
               (949) 249-1227
             </Typography>
-            <Typography variant="h5" sx={{color: "rgba(255, 255, 255, .6)"}}>
+            <Typography variant="h5" sx={{color: "rgba(255, 255, 255, .6)", '@media (min-width: 900px) and (max-width: 1000px)': {fontSize: '12px'}}}>
               training@ocwildlandfire.com
             </Typography>
-            <Typography variant="h5" sx={{color: "rgba(255, 255, 255, .6)"}}>
+            <Typography variant="h5" sx={{color: "rgba(255, 255, 255, .6)", textWrap: "nowrap", '@media (min-width: 900px) and (max-width: 1000px)': {fontSize: '12px'}}}>
               Orange County, CA
             </Typography>
           </Box>
