@@ -1,48 +1,41 @@
-import { Box, Typography, Card, CardContent } from '@mui/material'
+// import React, { FC } from 'react';
+import { useQuery } from '@apollo/client';
+import { GET_PRODUCTS } from '../graphql/queries';
+import { GetProductsQuery, Product } from '../graphql/types';
+import { ProductCard } from '../components/ProductCard';
+import { Box, Grid, Typography } from '@mui/material'
+import LoadingSpinner from '../components/LoadingSpinner';
 
-function About() {
+
+function Store() {
+  const { loading, error, data } = useQuery<GetProductsQuery>(GET_PRODUCTS);
+
+  if (loading) return <LoadingSpinner />
+  if (error) return <Typography align='center' color="error">Error: {error.message}</Typography>
+
+  const products: Product[] = data?.products || [];
+
   return (
-    <Box>
-      <Typography variant="h3" component="h1" className="mb-8 text-gray-800 font-bold">
-        About OC Wildland
+    <Box className="p-8">
+      <Typography sx={{ mb: 6, fontWeight: 700, fontSize: 36 }}>
+        Products
       </Typography>
 
-      <Card className="mb-6">
-        <CardContent className="p-6">
-          <Typography variant="h5" component="h2" className="mb-4 text-gray-800">
-            Our Mission
+      <Grid container spacing={4} >
+        {products.length > 0 ? (
+          products.map((product) => (
+            <Grid item key={product.name} xs={12} sm={6} md={6} lg={4}>
+              <ProductCard product={product} />
+            </Grid>
+          ))
+        ) : (
+          <Typography variant="body1">
+            No Products Available
           </Typography>
-          <Typography variant="body1" className="mb-4 text-gray-600">
-            OC Wildland is dedicated to protecting Orange County's natural wildland areas
-            through advanced monitoring, fire prevention strategies, and community engagement.
-          </Typography>
-          <Typography variant="body1" className="text-gray-600">
-            We leverage cutting-edge technology and data analytics to provide real-time
-            insights into wildland conditions, helping prevent fires and protect our communities.
-          </Typography>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardContent className="p-6">
-          <Typography variant="h5" component="h2" className="mb-4 text-gray-800">
-            Technology Stack
-          </Typography>
-          <Typography variant="body1" className="mb-2 text-gray-600">
-            This application is built with modern web technologies:
-          </Typography>
-          <ul className="list-disc list-inside text-gray-600 space-y-1">
-            <li>React 18 with TypeScript</li>
-            <li>Vite for fast development and building</li>
-            <li>Material-UI for component library</li>
-            <li>Tailwind CSS for utility-first styling</li>
-            <li>Apollo Client for GraphQL data management</li>
-            <li>React Router for navigation</li>
-          </ul>
-        </CardContent>
-      </Card>
+        )}
+      </Grid>
     </Box>
   )
 }
 
-export default About
+export default Store;

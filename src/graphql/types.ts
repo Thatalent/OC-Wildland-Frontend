@@ -1,6 +1,21 @@
 // TypeScript types for your GraphQL schema
 // Replace these with your actual schema types
 
+//defines exact format that info should be in
+export interface ProductImage {
+  url: string;
+}
+
+export interface Product {
+  name: string;
+  price: number;
+  img: ProductImage;
+}
+
+export interface GetProductsQuery {
+  products: Product[];
+}
+
 export interface Wildland {
   id: string
   name: string
