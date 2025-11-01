@@ -13,19 +13,7 @@ const GET_WILDLAND_DATA = gql`
   }
 `
 
-export const GET_TEAM_MEMBERS = gql`
-  query GetTeamMembers {
-    teamMembers {
-      id
-      name
-      title
-      roleDescription
-      avatar {
-        url
-      }
-    }
-  }
-`;
+
 
 function Home() {
   // const { loading, error, data } = useQuery(GET_WILDLAND_DATA)

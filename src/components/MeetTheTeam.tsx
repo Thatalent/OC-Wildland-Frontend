@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { GET_TEAM_MEMBERS } from "../pages/Home";
+import { GET_TEAM_MEMBERS } from "../graphql/queries";
 
 export default function MeetTheTeam() {
   const { data, loading, error } = useQuery(GET_TEAM_MEMBERS);
@@ -27,9 +27,9 @@ export default function MeetTheTeam() {
   const members = data?.teamMembers || [];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-[rgba(241, 245, 249, 0.5)]">
       <div className="max-w-7xl mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">
+        <h2 className="text-3xl font-bold text-[rgba(31,38,46,1)] mb-4">
           Meet Our Expert Team
         </h2>
         <p className="text-[rgba(102,128,153,1)] mb-12 mx-auto">
@@ -68,7 +68,7 @@ export default function MeetTheTeam() {
                 )}
               </div>
 
-              <h3 className="text-lg font-semibold text-gray-900">
+              <h3 className="text-lg font-semibold text-[rgba(31,38,46,1)]">
                 {member.name || "Team Member"}
               </h3>
               <p className="text-sm text-orange-600 font-medium mb-2">
