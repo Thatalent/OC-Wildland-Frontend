@@ -6,6 +6,10 @@ function About() {
       <Typography variant="h3" component="h1" className="mb-8 text-gray-800 font-bold">
         About OC Wildland
       </Typography>
+      <Typography className="bg-blue-500 text-white text-2xl font-bold p-4">
+        Tailwind Works 🎉
+      </Typography>
+
 
       <Card className="mb-6">
         <CardContent className="p-6">
