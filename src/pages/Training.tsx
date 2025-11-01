@@ -1,106 +1,226 @@
+import {
+  Box,
+  Container,
+  Typography,
+  Button,
+  ButtonGroup,
+  Select,
+  MenuItem,
+  Paper,
+} from "@mui/material";
+import { gql, useQuery } from "@apollo/client";
+
+
+const GET_CLASSES = gql`
+  query {
+    posts {
+      id
+      title
+      date
+      time
+      location
+      spots
+      price
+      content {
+        document
+      }
+    }
+  }
+`;
+
 function Training() {
-  const classes = [
-    {
-      id: 1,
-      title: "Basic Wildland Firefighter Course Blended (S-130, S-190, L-180)",
-      description:
-        "Equip new recruits with the essential skills and knowledge for safe and effective work in wildland fire environments.",
-      date: "Various",
-      time: "Full Schedule",
-      location: "OC Training Center",
-      spots: "16 spots available",
-      price: "$350",
-    },
-    {
-      id: 2,
-      title: "RT-130 Annual Wildland Fire Refresher",
-      description:
-        "Essential training for new wildland firefighters covering fire behavior, safety, and suppression techniques.",
-      date: "Aug 22, 2025",
-      time: "8:00 AM - 4:00 PM",
-      location: "OC Training Center",
-      spots: "18 spots available",
-      price: "$200",
-    },
-  ];
+  const { data, loading, error } = useQuery(GET_CLASSES);
+
+  if (loading) return <Typography>Loading...</Typography>;
+  if (error) return <Typography color="error">Error loading classes</Typography>;
+
+  const classes = data?.posts || [];
 
   return (
-    <section className="bg-[#F7F8FA] py-24 font-[400] text-[#1F2937]">
-      <div className="max-w-[1440px] mx-auto px-8">
+    <Box sx={{ bgcolor: "#F7F8FA", py: 12, fontWeight: 400, color: "#1F2937" }}>
+      <Container maxWidth="xl">
         {/* ===== HEADER ===== */}
-        <div className="mb-10">
-          {/* Title */}
-          <h2 className="font-inter text-[36px] leading-[44px] font-semibold text-[#111827] mb-6">
-            Featured &amp; Upcoming Classes
-          </h2>
-
+        <Box mb={6}>
+          <Typography
+            variant="h4"
+            sx={{
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 600,
+              fontSize: "36px",
+              lineHeight: "44px",
+              color: "#111827",
+              mb: 3,
+            }}
+          >
+            Featured & Upcoming Classes
+          </Typography>
 
           {/* Filter Row */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            {/* Filter Buttons */}
-            <div className="flex flex-1 bg-white rounded-md border border-gray-200 p-1 justify-between shadow-sm md:max-w-[800px]">
-              <button className="flex-1 px-4 py-2 text-sm font-medium rounded-md bg-[#E8EDF9] text-[#1E40AF]">
+          <Box
+            display="flex"
+            flexDirection={{ xs: "column", md: "row" }}
+            alignItems={{ md: "center" }}
+            justifyContent={{ md: "space-between" }}
+            gap={2}
+          >
+            {/* 🔹 Longer full-width ButtonGroup */}
+            <ButtonGroup
+              variant="outlined"
+              fullWidth
+              sx={{
+                bgcolor: "white",
+                borderColor: "#E5E7EB",
+                borderRadius: 1,
+                boxShadow: 1,
+              }}
+            >
+              <Button
+                fullWidth
+                variant="contained"
+                sx={{
+                  bgcolor: "#E8EDF9",
+                  color: "#1E40AF",
+                  textTransform: "none",
+                  "&:hover": { bgcolor: "#dce4f8" },
+                }}
+              >
                 Wildland Fire
-              </button>
-              <button className="flex-1 px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#1E40AF] transition-colors">
+              </Button>
+              <Button
+                fullWidth
+                sx={{
+                  color: "#4B5563",
+                  textTransform: "none",
+                  "&:hover": { color: "#1E40AF", bgcolor: "transparent" },
+                }}
+              >
                 CPR & First Aid
-              </button>
-            </div>
+              </Button>
+            </ButtonGroup>
 
-            {/* Dropdown */}
-            <select className="text-sm border border-gray-300 rounded-md px-3 py-2 text-gray-600 bg-white w-full md:w-auto">
-              <option>All Locations</option>
-              <option>OC Training Center</option>
-              <option>Online</option>
-            </select>
-          </div>
-        </div>
+            <Select
+              defaultValue="All Locations"
+              size="small"
+              sx={{
+                bgcolor: "white",
+                color: "#4B5563",
+                borderColor: "#D1D5DB",
+                width: { xs: "100%", md: "auto" },
+                "& .MuiSelect-select": { py: 1, px: 2 },
+              }}
+            >
+              <MenuItem value="All Locations">All Locations</MenuItem>
+              <MenuItem value="OC Training Center">OC Training Center</MenuItem>
+              <MenuItem value="Online">Online</MenuItem>
+            </Select>
+          </Box>
+        </Box>
 
         {/* ===== CLASS CARDS ===== */}
-        <div className="flex flex-col gap-5">
-          {classes.map((cls) => (
-            <div
+        <Box display="flex" flexDirection="column" gap={3}>
+          {classes.map((cls: any) => (
+            <Paper
               key={cls.id}
-              className="bg-white border border-gray-200 rounded-lg shadow-sm px-6 py-5 flex flex-col md:flex-row md:items-start md:justify-between"
+              elevation={1}
+              sx={{
+                display: "flex",
+                flexDirection: { xs: "column", md: "row" },
+                justifyContent: "space-between",
+                alignItems: { md: "flex-start" },
+                p: 3,
+                border: "1px solid #E5E7EB",
+                borderRadius: 2,
+              }}
             >
               {/* LEFT SIDE */}
-              <div className="text-[15.25px] leading-[24px] font-[400] text-[#1F2937] md:w-3/4">
-                <h3 className="text-[#F34E1B] font-semibold text-[16px] mb-1">
+              <Box sx={{ width: { md: "75%" } }}>
+                <Typography
+                  sx={{
+                    color: "#F34E1B",
+                    fontWeight: 600,
+                    fontSize: "16px",
+                    mb: 0.5,
+                  }}
+                >
                   {cls.title}
-                </h3>
-                <p className="text-[#4B5563] mb-3">{cls.description}</p>
-                <div className="flex flex-wrap items-center gap-2 text-[#6B7280] text-[14px]">
-                  <span>{cls.date}</span>
-                  <span>•</span>
-                  <span>{cls.time}</span>
-                  <span>•</span>
-                  <span>{cls.location}</span>
-                  <span>•</span>
-                  <span>{cls.spots}</span>
-                </div>
-              </div>
+                </Typography>
 
-              {/* RIGHT SIDE: PRICE + BUTTON */}
-              <div className="flex flex-col items-start md:items-end mt-4 md:mt-0 md:w-1/4">
-                <p className="text-[18px] font-semibold text-[#111827] mb-2">
-                  {cls.price}
-                </p>
-                <button className="bg-[#F34E1B] hover:bg-[#D94312] text-white font-semibold text-[14px] leading-[22px] rounded-md px-6 py-2 transition-all shadow-sm">
+                <Typography
+                  sx={{ color: "#4B5563", mb: 1.5, fontSize: "15px" }}
+                >
+                  {cls.content?.document?.[0]?.children?.[0]?.text ||
+                    "No description"}
+                </Typography>
+
+                <Typography sx={{ color: "#6B7280", fontSize: "14px" }}>
+                  {cls.date || "Date TBD"} • {cls.time || "Time TBD"} •{" "}
+                  {cls.location || "Location TBD"} •{" "}
+                  {cls.spots || "Spots TBD"}
+                </Typography>
+              </Box>
+
+              {/* RIGHT SIDE */}
+              <Box
+                sx={{
+                  mt: { xs: 2, md: 0 },
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: { xs: "flex-start", md: "flex-end" },
+                  width: { md: "25%" },
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontSize: "18px",
+                    fontWeight: 600,
+                    color: "#111827",
+                    mb: 1,
+                  }}
+                >
+                  {cls.price || "$—"}
+                </Typography>
+
+                <Button
+                  variant="contained"
+                  sx={{
+                    bgcolor: "#F34E1B",
+                    "&:hover": { bgcolor: "#D94312" },
+                    textTransform: "none",
+                    fontWeight: 600,
+                    fontSize: "14px",
+                    borderRadius: 1,
+                    px: 3,
+                    py: 1,
+                    boxShadow: 1,
+                  }}
+                >
                   Add to Cart
-                </button>
-              </div>
-            </div>
+                </Button>
+              </Box>
+            </Paper>
           ))}
-        </div>
+        </Box>
 
         {/* ===== FOOTER BUTTON ===== */}
-        <div className="mt-10 flex justify-center">
-          <button className="border border-gray-300 rounded-md px-8 py-3 text-[15px] font-medium text-gray-800 hover:bg-gray-100 transition-all">
+        <Box mt={8} display="flex" justifyContent="center">
+          <Button
+            variant="outlined"
+            sx={{
+              borderColor: "#D1D5DB",
+              color: "#1F2937",
+              textTransform: "none",
+              fontSize: "15px",
+              fontWeight: 500,
+              px: 4,
+              py: 1.5,
+              "&:hover": { bgcolor: "#F9FAFB" },
+            }}
+          >
             View All Wildfire Courses
-          </button>
-        </div>
-      </div>
-    </section>
+          </Button>
+        </Box>
+      </Container>
+    </Box>
   );
 }
 
