@@ -39,7 +39,7 @@ function Training() {
   return (
     <Box sx={{ bgcolor: "#F7F8FA", py: 12, fontWeight: 400, color: "#1F2937" }}>
       <Container maxWidth="xl">
-        {/* ===== HEADER ===== */}
+
         <Box mb={6}>
           <Typography
             variant="h4"
@@ -55,7 +55,6 @@ function Training() {
             Featured & Upcoming Classes
           </Typography>
 
-          {/* Filter Row */}
           <Box
             display="flex"
             flexDirection={{ xs: "column", md: "row" }}
@@ -63,7 +62,7 @@ function Training() {
             justifyContent={{ md: "space-between" }}
             gap={2}
           >
-            {/* 🔹 Longer full-width ButtonGroup */}
+
             <ButtonGroup
               variant="outlined"
               fullWidth
@@ -116,7 +115,7 @@ function Training() {
           </Box>
         </Box>
 
-        {/* ===== CLASS CARDS ===== */}
+
         <Box display="flex" flexDirection="column" gap={3}>
           {classes.map((cls: any) => (
             <Paper
@@ -201,7 +200,6 @@ function Training() {
           ))}
         </Box>
 
-        {/* ===== FOOTER BUTTON ===== */}
         <Box mt={8} display="flex" justifyContent="center">
           <Button
             variant="outlined"
