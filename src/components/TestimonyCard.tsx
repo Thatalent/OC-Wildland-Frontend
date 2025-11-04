@@ -12,8 +12,8 @@ function TestimonyCard({testimony}: TestimonyCardProps) {
   <div className="flex items-center mb-4">
     <img
       className="w-[48px] h-[48px] rounded-full mr-6"
-      src={testimony.imageUrl}
-      alt={testimony.name}
+      src={testimony.imageUrl || "./quotation-mark.svg"}
+      alt={testimony.name || "quotation mark icon"}
     />
     <div>
       <h3 className="text-lg font-semibold text-gray-800 m-0">{testimony.name}</h3>

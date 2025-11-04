@@ -64,11 +64,12 @@ function TestimonyCarousel() {
       </Typography>
 
       <div className="flex flex-wrap justify-center gap-8 mt-10 mt-12">
-        {visible.length > 0 && visible.map((data) => (
+        {visible.length > 0 ? visible.map((data) => (
           <div key={data.id} className="w-full sm:w-[592px]">
             <TestimonyCard testimony={data} />
           </div>
-        ))}
+        )):
+        <Typography>There are no testimonies yet.</Typography>}
       </div>
 
       <div className="flex justify-center gap-4 mt-6">
