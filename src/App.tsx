@@ -15,11 +15,11 @@ import Terms from "./pages/Terms";
 import WildlandsTraining from "./pages/WildlandsTraining";
 
 
+
 function App() {
   return (
     <Box className="min-h-screen bg-gray-50">
       <Header />
-
 
       <Container maxWidth="lg" className="py-8">
         <Routes>

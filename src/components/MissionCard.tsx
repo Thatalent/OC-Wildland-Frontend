@@ -7,7 +7,7 @@ function MissionCard() {
         Our Mission
       </h2>
 
-      <p className="text-lg md:text-xl text-gray-800 font-medium max-w-4xl mx-auto leading-relaxed">
+      <p className="text-lg md:text-xl text-gray-800 font-medium max-w-[37rem] mx-auto leading-relaxed">
         At{" "}
         <span className="text-orange-600 font-semibold">OC Wildland</span>, our
         mission is to train individuals with the{" "}
@@ -15,9 +15,9 @@ function MissionCard() {
         necessary to serve as wildland firefighters.
       </p>
 
-      <p className="text-sm md:text-base text-gray-500 mt-6 max-w-2xl mx-auto leading-snug">
+      <p className="text-sm md:text-base text-gray-500 mt-6 max-w-[45rem] mx-auto leading-snug">
         Our mission extends to ensuring wildfire preparedness that everyone is
-        prepared to protect against the hazards of wildland fires.
+        prepared to <span className="text-gray-800">protect against the hazards</span> of wildland fires.
       </p>
     </section>
   );
