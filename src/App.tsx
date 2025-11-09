@@ -13,13 +13,13 @@ import Store from "./pages/Store";
 import Training from "./pages/Training";
 import Terms from "./pages/Terms";
 import WildlandsTraining from "./pages/WildlandsTraining";
-import MissionCard from "./components/MissionCard";
+
 
 function App() {
   return (
     <Box className="min-h-screen bg-gray-50">
       <Header />
-      <MissionCard />
+
 
       <Container maxWidth="lg" className="py-8">
         <Routes>
