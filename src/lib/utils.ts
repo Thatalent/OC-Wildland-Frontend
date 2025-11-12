@@ -56,3 +56,11 @@ export function useDebounce<T>(value: T, delay: number): T {
 
   return debouncedValue
 }
+
+export const formatPrice = (cents?: number, currency = 'USD') =>
+  typeof cents === 'number'
+    ? new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency,
+    }).format(cents / 100)
+    : ""

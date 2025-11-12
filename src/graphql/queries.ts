@@ -54,3 +54,19 @@ export const UPDATE_WILDLAND = gql`
     }
   }
 `
+
+export const PROGRAMS_GRID = gql`
+  query ProgramsGrid($limit: Int = 9) {
+    programs(take: $limit, orderBy: { title: asc }) {
+      id
+      title
+      slug
+      summary
+      price
+      thumbnail
+      startDate
+      location
+      duration
+    }
+  }
+`
