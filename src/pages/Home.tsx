@@ -53,7 +53,13 @@ function Home() {
           </Card>
         </Grid>
 
-        <ProgramsGrid />
+        <ProgramsGrid
+          title="Featured Training Programs"
+          description="Master wildfire essentials with hands-on instruction."
+          limit={6}
+          buttonText="View course"
+          buttonLink={(slug) => `/wildlandstraining/${slug}`}
+        />
 
         {/* {data?.wildlands && (
           <Grid item xs={12}>

@@ -4,9 +4,16 @@ import { formatPrice } from "../lib/utils";
 
 type Props = {
   program: Program;
+  buttonText?: string;
+  buttonLink?: string;
 };
 
-export default function ProgramCard({ program }: Props) {
+export default function ProgramCard({
+  program,
+  buttonText = "Learn more",
+  buttonLink,
+}: Props) {
+  const link = buttonLink || `/programs/${program.slug}`;
   // Format date if available
   const formatDate = (dateString?: string) => {
     if (!dateString) return null;
@@ -87,10 +94,10 @@ export default function ProgramCard({ program }: Props) {
         <div className="mt-4 flex items-center justify-between">
           <span className="text-2xl font-bold text-gray-900">{formatPrice(program.price)}</span>
           <Link
-            to={`/programs/${program.slug}`}
+            to={link}
             className="inline-flex items-center rounded-xl px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 focus-visible:ring-offset-2 transition-all"
           >
-            Learn more
+            {buttonText}
           </Link>
         </div>
       </div>

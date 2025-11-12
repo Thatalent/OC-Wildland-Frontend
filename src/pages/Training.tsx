@@ -1,48 +1,20 @@
-import { Box, Typography, Card, CardContent } from '@mui/material'
+import { Box } from '@mui/material'
+import ProgramsGrid from '../components/ProgramsGrid'
 
-function About() {
+function Training() {
   return (
     <Box>
-      <Typography variant="h3" component="h1" className="mb-8 text-gray-800 font-bold">
-        About OC Wildland
-      </Typography>
-
-      <Card className="mb-6">
-        <CardContent className="p-6">
-          <Typography variant="h5" component="h2" className="mb-4 text-gray-800">
-            Our Mission
-          </Typography>
-          <Typography variant="body1" className="mb-4 text-gray-600">
-            OC Wildland is dedicated to protecting Orange County's natural wildland areas
-            through advanced monitoring, fire prevention strategies, and community engagement.
-          </Typography>
-          <Typography variant="body1" className="text-gray-600">
-            We leverage cutting-edge technology and data analytics to provide real-time
-            insights into wildland conditions, helping prevent fires and protect our communities.
-          </Typography>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardContent className="p-6">
-          <Typography variant="h5" component="h2" className="mb-4 text-gray-800">
-            Technology Stack
-          </Typography>
-          <Typography variant="body1" className="mb-2 text-gray-600">
-            This application is built with modern web technologies:
-          </Typography>
-          <ul className="list-disc list-inside text-gray-600 space-y-1">
-            <li>React 18 with TypeScript</li>
-            <li>Vite for fast development and building</li>
-            <li>Material-UI for component library</li>
-            <li>Tailwind CSS for utility-first styling</li>
-            <li>Apollo Client for GraphQL data management</li>
-            <li>React Router for navigation</li>
-          </ul>
-        </CardContent>
-      </Card>
+      {/* Example: All Training Programs page */}
+      <ProgramsGrid
+        title="All Wildland Fire Classes"
+        description="Browse our complete catalog of wildland fire training courses."
+        limit={12}
+        buttonText="Learn more"
+        buttonLink={(slug) => `/programs/${slug}`}
+        centered={false}
+      />
     </Box>
   )
 }
 
-export default About
+export default Training
