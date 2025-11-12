@@ -1,8 +1,9 @@
 import { Box, Typography, Card, CardContent, Button, Grid } from '@mui/material'
 import { useQuery, gql } from '@apollo/client'
+import PreFooter from '../components/PreFooter'
 
 // Example GraphQL query - replace with your actual schema
-const GET_WILDLAND_DATA = gql`
+/* const GET_WILDLAND_DATA = gql`
   query GetWildlandData {
     wildlands {
       id
@@ -11,17 +12,17 @@ const GET_WILDLAND_DATA = gql`
       status
     }
   }
-`
+` */
 
 function Home() {
-  const { loading, error, data } = useQuery(GET_WILDLAND_DATA)
+  /* const { loading, error, data } = useQuery(GET_WILDLAND_DATA)
 
   if (loading) return <Typography>Loading...</Typography>
-  if (error) return <Typography color="error">Error: {error.message}</Typography>
+  if (error) return <Typography color="error">Error: {error.message}</Typography> */
 
   return (
     <Box>
-      <Typography variant="h3" component="h1" className="mb-8 text-gray-800 font-bold">
+     {/*  <Typography variant="h3" component="h1" className="mb-8 text-gray-800 font-bold">
         Welcome to OC Wildland
       </Typography>
 
@@ -96,7 +97,8 @@ function Home() {
             </Card>
           </Grid>
         )}
-      </Grid>
+      </Grid> */}
+      <PreFooter />
     </Box>
   )
 }

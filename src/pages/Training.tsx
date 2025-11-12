@@ -1,4 +1,5 @@
 import { Box, Typography, Card, CardContent } from '@mui/material'
+import PreFooter from '../components/PreFooter'
 
 function About() {
   return (
@@ -41,6 +42,7 @@ function About() {
           </ul>
         </CardContent>
       </Card>
+      <PreFooter />
     </Box>
   )
 }

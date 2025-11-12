@@ -13,6 +13,40 @@ export const GET_WILDLANDS = gql`
     }
   }
 `
+export const GET_WILDLANDS_IMAGES = gql `
+  query GetWildlandImages($route: String!){
+
+    routeImage: images( where: { pageRoute: { equals: $route }}) {
+    id
+    name
+    altText
+    imageUrl { url }
+    }
+
+    defaultImage: images( where: { name: { equals: "PreFooter Default"}}) {
+    id
+    name
+    altText
+    imageUrl { url }
+    }
+  }
+`
+
+export const GET_WILDLANDS_PREFOOTER = gql `
+  query GetWildlandPrefooter($route: String!){
+    preFooters(where: {pageRoute: {equals: $route}}){
+      title
+      subtitle
+      quote
+      quoteAuthor
+      showQuote
+      ctaPrimaryText
+      ctaPrimaryLink
+      ctaSecondaryText
+      ctaSecondaryLink
+    }
+  }
+`
 
 export const GET_WILDLAND_BY_ID = gql`
   query GetWildlandById($id: ID!) {
