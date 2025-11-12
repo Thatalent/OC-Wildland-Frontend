@@ -3,6 +3,7 @@ import { PROGRAMS_GRID } from "../graphql/queries";
 import type { Program } from "../graphql/types";
 import ProgramCard from "./ProgramCard";
 import LoadingSpinner from "./LoadingSpinner";
+import "./ProgramsGrid.css";
 
 type QueryData = {
   programs: Program[];
@@ -31,21 +32,17 @@ export default function ProgramsGrid({
 
   if (loading) {
     return (
-      <section aria-label={title} className="py-10 sm:py-14">
-        <div className="mx-auto max-w-7xl px-4">
-          <header className={`mb-8 ${centered ? 'text-center' : ''}`}>
-            <h2 className="font-bold" style={{
-              fontSize: '24px',
-              lineHeight: '32px',
-            }}>
-              <span className="sm:hidden">{title}</span>
-              <span className="hidden sm:inline" style={{ fontSize: '36px', lineHeight: '40px' }}>{title}</span>
+      <section aria-label={title} className="programs-grid">
+        <div className="programs-grid__container">
+          <header className={`programs-grid__header ${centered ? 'programs-grid__header--centered' : ''}`}>
+            <h2 className="programs-grid__title">
+              {title}
             </h2>
-            <p className="mt-2 text-gray-600">Loading programs…</p>
+            <p className="programs-grid__description">Loading programs…</p>
           </header>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="programs-grid__loading">
             {[...Array(3)].map((_, i) => (
-              <div key={i} className="h-64 rounded-2xl bg-gray-100 grid place-items-center">
+              <div key={i} className="programs-grid__skeleton">
                 <LoadingSpinner />
               </div>
             ))}
@@ -57,23 +54,16 @@ export default function ProgramsGrid({
 
   if (error) {
     return (
-      <section aria-label={title} className="py-10 sm:py-14">
-        <div className="mx-auto max-w-7xl px-4">
-          <header className={`mb-8 ${centered ? 'text-center' : ''}`}>
-            <h2 className="font-bold" style={{
-              fontSize: '24px',
-              lineHeight: '32px',
-            }}>
-              <span className="sm:hidden">{title}</span>
-              <span className="hidden sm:inline" style={{ fontSize: '36px', lineHeight: '40px' }}>{title}</span>
+      <section aria-label={title} className="programs-grid">
+        <div className="programs-grid__container">
+          <header className={`programs-grid__header ${centered ? 'programs-grid__header--centered' : ''}`}>
+            <h2 className="programs-grid__title">
+              {title}
             </h2>
           </header>
-          <div
-            role="alert"
-            className="rounded-2xl bg-red-50 border border-red-200 p-8 text-center"
-          >
+          <div role="alert" className="programs-grid__error">
             <svg
-              className="mx-auto h-12 w-12 text-red-400 mb-4"
+              className="programs-grid__error-icon"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -86,15 +76,15 @@ export default function ProgramsGrid({
                 d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
               />
             </svg>
-            <h3 className="text-lg font-semibold text-red-900 mb-2">
+            <h3 className="programs-grid__error-title">
               Unable to Load Programs
             </h3>
-            <p className="text-red-700 mb-4">
+            <p className="programs-grid__error-message">
               We're having trouble loading the training programs. Please try again later.
             </p>
             <button
               onClick={() => window.location.reload()}
-              className="inline-flex items-center rounded-xl px-5 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
+              className="programs-grid__error-button"
             >
               Retry
             </button>
@@ -107,23 +97,21 @@ export default function ProgramsGrid({
   const items = data?.programs ?? [];
 
   return (
-    <section aria-label={title} className="py-10 sm:py-14 bg-[rgba(241,245,249,0.5)]">
-      <div className="mx-auto max-w-7xl px-4">
-        <header className={`mb-8 ${centered ? 'text-center' : ''}`}>
-          <h2 className="font-bold" style={{
-            fontSize: '24px',
-            lineHeight: '32px',
-          }}>
-            <span className="sm:hidden">{title}</span>
-            <span className="hidden sm:inline" style={{ fontSize: '36px', lineHeight: '40px' }}>{title}</span>
+    <section aria-label={title} className="programs-grid">
+      <div className="programs-grid__container">
+        <header className={`programs-grid__header ${centered ? 'programs-grid__header--centered' : ''}`}>
+          <h2 className="programs-grid__title">
+            {title}
           </h2>
-          {description && <p className="mt-2 text-gray-600">{description}</p>}
+          {description && (
+            <p className="programs-grid__description">{description}</p>
+          )}
         </header>
 
         {items.length === 0 ? (
-          <div className="rounded-2xl bg-white border border-gray-200 p-12 text-center">
+          <div className="programs-grid__empty">
             <svg
-              className="mx-auto h-16 w-16 text-gray-400 mb-4"
+              className="programs-grid__empty-icon"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -136,13 +124,13 @@ export default function ProgramsGrid({
                 d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
               />
             </svg>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">No Programs Available</h3>
-            <p className="text-gray-600">
+            <h3 className="programs-grid__empty-title">No Programs Available</h3>
+            <p className="programs-grid__empty-message">
               There are currently no training programs available. Check back soon for new offerings.
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="programs-grid__list">
             {items.map((p) => (
               <ProgramCard
                 key={p.id}

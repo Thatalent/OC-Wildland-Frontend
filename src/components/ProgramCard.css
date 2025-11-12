@@ -1,0 +1,142 @@
+/* Block: program-card */
+.program-card {
+  border-radius: 1rem;
+  background-color: white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s, outline 0.2s;
+}
+
+.program-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.program-card:focus-within {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
+}
+
+/* Element: program-card__thumbnail */
+.program-card__thumbnail {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 1rem 1rem 0 0;
+  background-color: #f3f4f6;
+}
+
+/* Element: program-card__image */
+.program-card__image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Element: program-card__placeholder */
+.program-card__placeholder {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+}
+
+/* Element: program-card__placeholder-icon */
+.program-card__placeholder-icon {
+  height: 4rem;
+  width: 4rem;
+}
+
+/* Element: program-card__content */
+.program-card__content {
+  padding: 1.25rem;
+}
+
+/* Element: program-card__title */
+.program-card__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ea580c;
+  margin: 0;
+}
+
+/* Element: program-card__summary */
+.program-card__summary {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Element: program-card__metadata */
+.program-card__metadata {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* Element: program-card__metadata-item */
+.program-card__metadata-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Element: program-card__metadata-icon */
+.program-card__metadata-icon {
+  height: 1rem;
+  width: 1rem;
+}
+
+/* Element: program-card__footer */
+.program-card__footer {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Element: program-card__price */
+.program-card__price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Element: program-card__button */
+.program-card__button {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: white;
+  background: linear-gradient(to right, #f97316, #dc2626);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.program-card__button:hover {
+  background: linear-gradient(to right, #ea580c, #b91c1c);
+}
+
+.program-card__button:focus {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
+}
+
+.program-card__button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.program-card__button:focus-visible {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
+}
