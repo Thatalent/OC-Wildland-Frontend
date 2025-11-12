@@ -51,5 +51,8 @@ export interface Program {
   slug: string;
   summary?: string;
   price?: number;
-  thumbnail?: { url: string; width?: number; height?: number } | null;
+  thumbnail?: string | null;
+  startDate?: string;
+  location?: string;
+  duration?: string;
 }

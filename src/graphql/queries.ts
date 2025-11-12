@@ -63,11 +63,10 @@ export const PROGRAMS_GRID = gql`
       slug
       summary
       price
-      thumbnail {
-        url
-        width
-        height
-      }
+      thumbnail
+      startDate
+      location
+      duration
     }
   }
 `
