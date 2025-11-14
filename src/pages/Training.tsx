@@ -10,17 +10,12 @@ import {
 } from "@mui/material";
 import { gql, useQuery } from "@apollo/client";
 
-
+// Correct GraphQL query
 const GET_CLASSES = gql`
   query {
     posts {
       id
       title
-      date
-      time
-      location
-      spots
-      price
       content {
         document
       }
@@ -39,7 +34,7 @@ function Training() {
   return (
     <Box sx={{ bgcolor: "#F7F8FA", py: 12, fontWeight: 400, color: "#1F2937" }}>
       <Container maxWidth="xl">
-
+        {/* PAGE HEADER */}
         <Box mb={6}>
           <Typography
             variant="h4"
@@ -62,7 +57,7 @@ function Training() {
             justifyContent={{ md: "space-between" }}
             gap={2}
           >
-
+            {/* CATEGORY BUTTONS */}
             <ButtonGroup
               variant="outlined"
               fullWidth
@@ -85,6 +80,7 @@ function Training() {
               >
                 Wildland Fire
               </Button>
+
               <Button
                 fullWidth
                 sx={{
@@ -97,6 +93,7 @@ function Training() {
               </Button>
             </ButtonGroup>
 
+            {/* LOCATION DROPDOWN */}
             <Select
               defaultValue="All Locations"
               size="small"
@@ -115,9 +112,9 @@ function Training() {
           </Box>
         </Box>
 
-
+        {/* CLASS CARDS */}
         <Box display="flex" flexDirection="column" gap={3}>
-          {classes.map((cls: any) => (
+          {classes.map((cls) => (
             <Paper
               key={cls.id}
               elevation={1}
@@ -144,17 +141,9 @@ function Training() {
                   {cls.title}
                 </Typography>
 
-                <Typography
-                  sx={{ color: "#4B5563", mb: 1.5, fontSize: "15px" }}
-                >
+                <Typography sx={{ color: "#4B5563", mb: 1.5, fontSize: "15px" }}>
                   {cls.content?.document?.[0]?.children?.[0]?.text ||
-                    "No description"}
-                </Typography>
-
-                <Typography sx={{ color: "#6B7280", fontSize: "14px" }}>
-                  {cls.date || "Date TBD"} • {cls.time || "Time TBD"} •{" "}
-                  {cls.location || "Location TBD"} •{" "}
-                  {cls.spots || "Spots TBD"}
+                    "No description available"}
                 </Typography>
               </Box>
 
@@ -176,7 +165,7 @@ function Training() {
                     mb: 1,
                   }}
                 >
-                  {cls.price || "$—"}
+                  Price TBD
                 </Typography>
 
                 <Button
@@ -200,6 +189,7 @@ function Training() {
           ))}
         </Box>
 
+        {/* VIEW ALL BUTTON */}
         <Box mt={8} display="flex" justifyContent="center">
           <Button
             variant="outlined"
