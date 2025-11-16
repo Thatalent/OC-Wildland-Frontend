@@ -8,13 +8,9 @@ export default defineConfig({
     port: 3000,
     open: true,
     proxy: {
-      '/api': {
-        target: 'http://localhost:4000',
-        changeOrigin: true,
-        // If your backend expects /api prefix, leave rewrite commented out
-        // rewrite: (path) => path.replace(/^\/api/, ''),
-      },
-    },
+      "/api": "http://localhost:8080/api/graphql",
+      "/images": "http://localhost:8080/",
+    }
   },
   build: {
     outDir: 'dist',
