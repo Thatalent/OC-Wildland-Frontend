@@ -53,20 +53,29 @@ export const theme = createTheme({
         root: {
           textTransform: 'none',
           borderRadius: 8,
-          background: 'linear-gradient(103.54deg, #EE2B2B 0%, #F34E1B 50%, #F8C630 100%)',
-          color: '#fff',
-	  '&:hover': {
           backgroundColor: 'transparent',
-        },
+          '&:hover': {
+            backgroundColor: 'transparent',
+          },
+          variants: [
+            {
+              props: { variant: 'gradient' },
+              style: {
+                color: '#fff',
+                background: 'linear-gradient(103.54deg, #EE2B2B 0%, #F34E1B 50%, #F8C630 100%)',
+              },
+            },
+          ],
 
         },
+
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
           borderRadius: 8,
-          border:"1px solid #E1E7EF,"
+          border: "1px solid #E1E7EF,"
         },
       },
     },
