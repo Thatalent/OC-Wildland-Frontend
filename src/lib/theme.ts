@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material/styles'
 export const theme = createTheme({
   palette: {
     primary: {
-      main: '#3b82f6',
+      main: '#1f262e',
       dark: '#1d4ed8',
       light: '#60a5fa',
     },
@@ -19,13 +19,7 @@ export const theme = createTheme({
   },
   typography: {
     fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
+      '"Inter", sans-serif',
     ].join(','),
     h1: {
       fontWeight: 600,
@@ -36,6 +30,22 @@ export const theme = createTheme({
     h3: {
       fontWeight: 600,
     },
+    h4: {
+      fontWeight: 400,
+      fontSize: '12px',
+      lineHeight: '16px',
+      color: 'rgba(255, 255, 255, .5)',
+    },
+    h5: {
+      fontWeight: 400,
+      lineHeight: "20px",
+      color: "rgba(255, 255, 255, .8)",
+      fontSize: '13.67px',
+    },
+    h6: {
+      fontWeight: 500,
+      fontSize: '14px',
+    },
   },
   components: {
     MuiButton: {
@@ -45,6 +55,10 @@ export const theme = createTheme({
           borderRadius: 8,
           background: 'linear-gradient(103.54deg, #EE2B2B 0%, #F34E1B 50%, #F8C630 100%)',
           color: '#fff',
+	  '&:hover': {
+          backgroundColor: 'transparent',
+        },
+
         },
       },
     },
