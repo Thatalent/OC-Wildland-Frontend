@@ -55,16 +55,27 @@ export const theme = createTheme({
           borderRadius: 8,
           backgroundColor: 'transparent',
           '&:hover': {
-          backgroundColor: 'transparent',
+            backgroundColor: 'transparent',
+          },
+          variants: [
+            {
+              props: { variant: 'gradient' },
+              style: {
+                color: '#fff',
+                background: 'linear-gradient(103.54deg, #EE2B2B 0%, #F34E1B 50%, #F8C630 100%)',
+              },
+            },
+          ],
+
         },
-        },
+
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 12,
-          boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+          borderRadius: 8,
+          border: "1px solid #E1E7EF,"
         },
       },
     },

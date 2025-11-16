@@ -14,11 +14,6 @@ const GET_WILDLAND_DATA = gql`
 `
 
 function Home() {
-  const { loading, error, data } = useQuery(GET_WILDLAND_DATA)
-
-  if (loading) return <Typography>Loading...</Typography>
-  if (error) return <Typography color="error">Error: {error.message}</Typography>
-
   return (
     <Box>
       <Typography variant="h3" component="h1" className="mb-8 text-gray-800 font-bold">
@@ -69,33 +64,6 @@ function Home() {
             </CardContent>
           </Card>
         </Grid>
-
-        {data?.wildlands && (
-          <Grid item xs={12}>
-            <Card>
-              <CardContent className="p-6">
-                <Typography variant="h5" component="h2" className="mb-4 text-gray-800">
-                  Wildland Areas
-                </Typography>
-                <Grid container spacing={2}>
-                  {data.wildlands.map((wildland: any) => (
-                    <Grid item xs={12} sm={6} md={4} key={wildland.id}>
-                      <Card variant="outlined">
-                        <CardContent>
-                          <Typography variant="h6">{wildland.name}</Typography>
-                          <Typography color="textSecondary">{wildland.location}</Typography>
-                          <Typography variant="body2" className="mt-2">
-                            Status: {wildland.status}
-                          </Typography>
-                        </CardContent>
-                      </Card>
-                    </Grid>
-                  ))}
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
-        )}
       </Grid>
     </Box>
   )

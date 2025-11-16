@@ -32,7 +32,7 @@ function App() {
     <Box className="min-h-screen bg-gray-50">
       <Navigation assets={assets}/>
 
-      <Container maxWidth="lg" className="py-8">
+      <Container maxWidth="xl" className="py-8">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
