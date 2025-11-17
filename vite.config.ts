@@ -18,12 +18,9 @@ export default defineConfig({
     port: 3000,
     open: true,
     proxy: {
-      "/api": {
-        target: "http://localhost:8080",
-        changeOrigin: true,
-        secure: false,
-      },
-    },
+      "/api": "http://localhost:8080/api/graphql",
+      "/images": "http://localhost:8080/",
+    }
   },
   build: {
     outDir: "dist",
