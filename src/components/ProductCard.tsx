@@ -10,10 +10,10 @@ type ProductCardProps = {
 //tells React/TypeScript that the props for this component must match the product structure
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   //auto formats price
-  const formattedPrice = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format(product.price);
+  // const formattedPrice = new Intl.NumberFormat('en-US', {
+  //   style: 'currency',
+  //   currency: 'USD',
+  // }).format(product.price);
   //check to make sure it changes
 
   const handleAddToCart = () => {
@@ -22,7 +22,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <Card variant="outlined" sx={{ width: '100%', height: 524 }} className="shadow-md">
-      <CardMedia component="img" sx={{ width: '100%', height: 422 }} image={product.img.url} alt={product.name} />
+      <CardMedia component="img" sx={{ width: '100%', height: 422, backgroundColor: 'F1F5F9', objectFit: 'contain' }} image={product.img.url} alt={product.name} />
       <CardContent className="pb-2" sx={{ pt: 1 }}>
         <Typography variant="body1" sx={{ fontWeight: 500, fontSize: 15.5, color: '1F262E' }}>
           {product.name}
@@ -32,7 +32,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </CardContent >
       <CardActions className="flex justify-between" sx={{ p: 2, pt: 0 }}>
         <Typography sx={{ fontWeight: 700, fontSize: 17.72, color: '1F262E' }}>
-          {formattedPrice}
+          ${product.price}
         </Typography>
         <Button sx={{
           backgroundColor: '#F34E1B', '&:hover': {
