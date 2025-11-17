@@ -1,5 +1,5 @@
 import { CheckCircle } from "lucide-react";
-import Image from "../../../public/Image+Shadow.png";
+import Image from "/Image+Shadow.png";
 
 export default function HomeBanner() {
   return (
@@ -54,7 +54,7 @@ export default function HomeBanner() {
 
       {/* RIGHT IMAGE */}
       <img
-        src={Image}              
+        src={Image}
         className="rounded-xl w-[548px] h-[384px] object-cover"
         alt="Wildland Training"
       />
