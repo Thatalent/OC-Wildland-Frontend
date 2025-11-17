@@ -1,9 +1,17 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "tailwindcss";
+import autoprefixer from "autoprefixer";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "./",
   plugins: [react()],
+  css: {
+    postcss: {
+      plugins: [tailwindcss(), autoprefixer()],
+    },
+  },
   server: {
     port: 3000,
     open: true,
@@ -13,7 +21,7 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: 'dist',
-    sourcemap: true
-  }
-})
+    outDir: "dist",
+    sourcemap: true,
+  },
+});

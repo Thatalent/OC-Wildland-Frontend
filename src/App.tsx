@@ -46,7 +46,10 @@ function App() {
           <Route path="/training" element={<Training />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/wildlandstraining" element={<WildlandsTraining />} />
+
+
         </Routes>
+
       </Container>
       <Footer assets={assets}/>
     </Box>
