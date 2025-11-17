@@ -113,143 +113,141 @@ function Contact() {
             </Stack>
 
             <Box sx={{ width: '100%', maxWidth: 534, mx: 'auto' }}>
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
-                <Typography
-                  variant="h3"
-                  component="h1"
-                  sx={{ mb: 1, fontWeight: 600, fontSize: 22, color: 'text.primary', display: 'flex', alignItems: 'center', gap: 1, letterSpacing: '-1.0px' }}
-                >
-                  <EmailOutlinedIcon sx={{ fontSize: 24, color: 'common.black', transform: 'translateY(2.2px)' }} />
-                  Send Us a Message
-                </Typography>
-              </Grid>
-              <Grid item xs={12} md={12}>
-                <Typography sx={{ height: 24, lineHeight: '24px', fontWeight: 500 }}>
-                  Your full name
-                </Typography>
-                <TextField
-                  placeholder="Your full name"
-                  variant="outlined"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  onFocus={() => { if (!startTs) setStartTs(Date.now()) }}
-                  onBlur={() => {
-                    setTouched((t) => ({ ...t, name: true }))
-                    validate()
-                  }}
-                  error={Boolean(touched.name && errors.name)}
-                  helperText={touched.name && errors.name}
-                  required
-                  fullWidth
-                  autoComplete="name"
-                  sx={{ mt: 1 }}
-                />
-              </Grid>
-
-              <Grid item xs={12} md={12}>
-                <Typography sx={{ height: 24, lineHeight: '24px', fontWeight: 500 }}>
-                  E-mail
-                </Typography>
-                <TextField
-                  variant="outlined"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  onBlur={() => {
-                    setTouched((t) => ({ ...t, email: true }))
-                    validate()
-                  }}
-                  error={Boolean(touched.email && errors.email)}
-                  helperText={touched.email && errors.email}
-                  required
-                  fullWidth
-                  autoComplete="email"
-                  sx={{ mt: 1 }}
-                />
-              </Grid>
-
-              <Grid item xs={12} md={12}>
-                <Typography sx={{ height: 24, lineHeight: '24px', fontWeight: 500 }}>
-                  Subject
-                </Typography>
-                <TextField
-                  select
-                  variant="outlined"
-                  value={subject}
-                  onChange={(e) => setSubject(e.target.value)}
-                  onBlur={() => {
-                    setTouched((t) => ({ ...t, subject: true }))
-                    validate()
-                  }}
-                  error={Boolean(touched.subject && errors.subject)}
-                  helperText={touched.subject && errors.subject}
-                  required
-                  fullWidth
-                  sx={{ mt: 1 }}
-                >
-                  <MenuItem value="general">General Inquiry</MenuItem>
-                  <MenuItem value="training">Training Request</MenuItem>
-                  <MenuItem value="consultation">Consultation</MenuItem>
-                  <MenuItem value="support">Support</MenuItem>
-                  <MenuItem value="other">Other</MenuItem>
-                </TextField>
-              </Grid>
-
-              <Grid item xs={12}>
-                <Typography sx={{ height: 24, lineHeight: '24px', fontWeight: 500 }}>
-                  Message
-                </Typography>
-                <TextField
-                  variant="outlined"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  onBlur={() => {
-                    setTouched((t) => ({ ...t, message: true }))
-                    validate()
-                  }}
-                  error={Boolean(touched.message && errors.message)}
-                  helperText={touched.message && errors.message}
-                  multiline
-                  required
-                  fullWidth
-                  autoComplete="off"
-                  sx={{
-                    mt: 1,
-                    // Fix the outer field height to 98px
-                    '& .MuiOutlinedInput-root': {
-                      height: 98,
-                      alignItems: 'flex-start',
-                    },
-                    // Make the textarea fill the height cleanly
-                    '& .MuiOutlinedInput-inputMultiline': {
-                      height: '100%',
-                      padding: '12px 14px',
-                      boxSizing: 'border-box',
-                      resize: 'none',
-                      overflow: 'auto',
-                    },
-                  }}
-                />
-              </Grid>
-
-              <Grid item xs={12}>
-              <Box sx={{ mt: 0 }}>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    disabled={loading || Boolean(errors.name || errors.email || errors.subject || errors.message)}
-                    sx={{
-                      width: '100%',
-                      background:
-                      'linear-gradient(97.01deg, #EE2B2B 0%, #F34E1B 50%, #F8C630 100%)'
-                    }}
+              <Grid container spacing={3}>
+                <Grid item xs={12}>
+                  <Typography
+                    variant="h3"
+                    component="h1"
+                    sx={{ mb: 1, fontWeight: 600, fontSize: 22, color: 'text.primary', display: 'flex', alignItems: 'center', gap: 1, letterSpacing: '-1.0px' }}
                   >
-                    {loading ? 'Sending…' : 'Send Message'}
-                  </Button>
-                </Box>
+                    <EmailOutlinedIcon sx={{ fontSize: 24, color: 'common.black', transform: 'translateY(2.2px)' }} />
+                    Send Us a Message
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} md={12}>
+                  <Typography sx={{ height: 24, lineHeight: '24px', fontWeight: 500 }}>
+                    Your full name
+                  </Typography>
+                  <TextField
+                    placeholder="Your full name"
+                    variant="outlined"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    onFocus={() => { if (!startTs) setStartTs(Date.now()) }}
+                    onBlur={() => {
+                      setTouched((t) => ({ ...t, name: true }))
+                      validate()
+                    }}
+                    error={Boolean(touched.name && errors.name)}
+                    helperText={touched.name && errors.name}
+                    required
+                    fullWidth
+                    autoComplete="name"
+                    sx={{ mt: 1 }}
+                  />
+                </Grid>
+
+                <Grid item xs={12} md={12}>
+                  <Typography sx={{ height: 24, lineHeight: '24px', fontWeight: 500 }}>
+                    E-mail
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onBlur={() => {
+                      setTouched((t) => ({ ...t, email: true }))
+                      validate()
+                    }}
+                    error={Boolean(touched.email && errors.email)}
+                    helperText={touched.email && errors.email}
+                    required
+                    fullWidth
+                    autoComplete="email"
+                    sx={{ mt: 1 }}
+                  />
+                </Grid>
+
+                <Grid item xs={12} md={12}>
+                  <Typography sx={{ height: 24, lineHeight: '24px', fontWeight: 500 }}>
+                    Subject
+                  </Typography>
+                  <TextField
+                    select
+                    variant="outlined"
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
+                    onBlur={() => {
+                      setTouched((t) => ({ ...t, subject: true }))
+                      validate()
+                    }}
+                    error={Boolean(touched.subject && errors.subject)}
+                    helperText={touched.subject && errors.subject}
+                    required
+                    fullWidth
+                    sx={{ mt: 1 }}
+                  >
+                    <MenuItem value="general">General Inquiry</MenuItem>
+                    <MenuItem value="training">Training Request</MenuItem>
+                    <MenuItem value="consultation">Consultation</MenuItem>
+                    <MenuItem value="support">Support</MenuItem>
+                    <MenuItem value="other">Other</MenuItem>
+                  </TextField>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Typography sx={{ height: 24, lineHeight: '24px', fontWeight: 500 }}>
+                    Message
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    onBlur={() => {
+                      setTouched((t) => ({ ...t, message: true }))
+                      validate()
+                    }}
+                    error={Boolean(touched.message && errors.message)}
+                    helperText={touched.message && errors.message}
+                    multiline
+                    required
+                    fullWidth
+                    autoComplete="off"
+                    sx={{
+                      mt: 1,
+                      // Fix the outer field height to 98px
+                      '& .MuiOutlinedInput-root': {
+                        height: 98,
+                        alignItems: 'flex-start',
+                      },
+                      // Make the textarea fill the height cleanly
+                      '& .MuiOutlinedInput-inputMultiline': {
+                        height: '100%',
+                        padding: '12px 14px',
+                        boxSizing: 'border-box',
+                        resize: 'none',
+                        overflow: 'auto',
+                      },
+                    }}
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Box sx={{ mt: 0 }}>
+                    <Button
+                      type="submit"
+                      variant="gradient"
+                      disabled={loading || Boolean(errors.name || errors.email || errors.subject || errors.message)}
+                      sx={{
+                        width: '100%',
+                      }}
+                    >
+                      {loading ? 'Sending…' : 'Send Message'}
+                    </Button>
+                  </Box>
+                </Grid>
               </Grid>
-            </Grid>
             </Box>
           </form>
         </CardContent>
