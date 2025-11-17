@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Container, Box } from "@mui/material";
+
 import Header from "./pages/Header";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -18,7 +19,6 @@ function App() {
   return (
     <Box className="min-h-screen bg-gray-50">
       <Header />
-
       <Container maxWidth="lg" className="py-8">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -33,7 +33,10 @@ function App() {
           <Route path="/training" element={<Training />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/wildlandstraining" element={<WildlandsTraining />} />
+
+
         </Routes>
+
       </Container>
     </Box>
   );

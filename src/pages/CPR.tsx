@@ -40,6 +40,7 @@ function About() {
             <li>React Router for navigation</li>
           </ul>
         </CardContent>
+        
       </Card>
     </Box>
   )
