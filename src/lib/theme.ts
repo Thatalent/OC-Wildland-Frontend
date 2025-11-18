@@ -15,6 +15,7 @@ export const theme = createTheme({
     background: {
       default: '#f8fafc',
       paper: '#ffffff',
+      gray: '#F1F5F9',
     },
   },
   typography: {
@@ -50,7 +51,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 12,
-          boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+          boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.1)',
         },
       },
     },

@@ -21,8 +21,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <Card variant="outlined" sx={{ width: '100%', height: 524 }} className="shadow-md">
-      <CardMedia component="img" sx={{ width: '100%', height: 422, backgroundColor: 'F1F5F9', objectFit: 'contain' }} image={product.img.url} alt={product.name} />
+    <Card sx={{ width: '100%', height: 524 }} className="shadow-md">
+      <CardMedia component="img" sx={{ width: '100%', height: 422, objectFit: 'contain', bgcolor: 'background.gray' }} image={product.img.url} alt={product.name} />
       <CardContent className="pb-2" sx={{ pt: 1 }}>
         <Typography variant="body1" sx={{ fontWeight: 500, fontSize: 15.5, color: '1F262E' }}>
           {product.name}
