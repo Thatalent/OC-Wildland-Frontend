@@ -16,7 +16,7 @@ function TestimonyCarousel() {
   const [index, setIndex] = useState(0)
 
   // Only show 2 cards and increment index by 2 (Can change if it just needs to be one)
-    const visible = testimonies.slice(index, index + 2)
+  const visible = testimonies.slice(index, index + 2)
   const next = () =>
     setIndex((prev) => (prev + 2 >= testimonies.length ? 0 : prev + 2))
   const prev = () =>
@@ -24,11 +24,11 @@ function TestimonyCarousel() {
 
   // Automatically increment the carousel
   useEffect(() => {
-  const interval = setInterval(next, 7000)
-  return () => clearInterval(interval)
-}, [testimonies])
+    const interval = setInterval(next, 7000)
+    return () => clearInterval(interval)
+  }, [testimonies])
 
-// Load Testimonies from Backend on mount
+  // Load Testimonies from Backend on mount
   useEffect(() => {
     fetch("http://localhost:3000/api/graphql", {
       method: "POST",
@@ -64,22 +64,31 @@ function TestimonyCarousel() {
       </Typography>
 
       <div className="flex flex-wrap justify-center gap-8 mt-10 mt-12">
-        {visible.length > 0 && visible.map((data) => (
+        {visible.length > 0 ? visible.map((data) => (
           <div key={data.id} className="w-full sm:w-[592px]">
             <TestimonyCard testimony={data} />
           </div>
-        ))}
+        )) :
+          <Typography>There are no testimonies yet.</Typography>}
       </div>
 
       <div className="flex justify-center gap-4 mt-6">
+<<<<<<< HEAD
         <Button
         variant={"primary" as any}
+=======
+        <Button variant="gradient"
+>>>>>>> main
           onClick={prev}
         >
           Prev
         </Button>
+<<<<<<< HEAD
         <Button
         variant={"primary" as any}
+=======
+        <Button variant="gradient"
+>>>>>>> main
           onClick={next}
         >
           Next
