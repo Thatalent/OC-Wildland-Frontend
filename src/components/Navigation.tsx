@@ -177,6 +177,7 @@ function Navigation({ assets }: NavigationProps) {
         </Box>
         <Box sx={{ mb: "34px", mt: "16px" }}>
           <Button
+          variant="gradient"
             sx={{
               color: "rgb(255,255,255)",
               width: "120px",

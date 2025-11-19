@@ -38,14 +38,14 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/consultation" element={<Consultation />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/cpr" element={<CPR />} />
+          <Route path="/cpr" element={<CPR assets={assets} />} />
           <Route path="/customtraining" element={<CustomTraining />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           <Route path="/store" element={<Store />} />
           <Route path="/training" element={<Training />} />
           <Route path="/terms" element={<Terms />} />
-          <Route path="/wildlandstraining" element={<WildlandsTraining />} />
+          <Route path="/wildlandstraining" element={<WildlandsTraining assets={assets} />} />
         </Routes>
       </Container>
       <Footer assets={assets}/>
