@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Box, Typography, Button, Menu, MenuItem} from '@mui/material'
+import { Box, Typography, Button, Select, MenuItem } from '@mui/material'
 
 import ProgramCard from './ProgramCard'
 
@@ -29,7 +29,24 @@ function ProgramFilter({programVariant, assets}: ProgramFilterProps) {
   const [locationFilter, setLocationFilter] = useState("All Locations");
   const [courseFilter, setCourseFilter] = useState("All Courses");
   const [levelsFilter, setLevelsFilter] = useState("All Levels")
-  const [dateFilter, setDateFilter] = useState("All Future Classes");
+  const [dateFilter, setDateFilter] = useState("Next 30 Days");
+
+// Styling for different states of the MenuItem Components
+  const menuItemStyles = {
+  fontSize: "14px",
+  fontWeight: 400,
+  "&:hover": {
+    backgroundColor: "#F1F5F9",
+    fontWeight: 600,
+  },
+  "&.Mui-selected": {
+    color: "#F34E1B",
+    backgroundColor: "#FFF",
+  },
+  "&.Mui-disabled": {
+    color: "#A1A1AA",
+  },
+};
 
 
 function calculateDays(date: Date, days: number) {
@@ -130,44 +147,46 @@ useEffect(() => {
       <Button variant={"tertiary" as any}>Grid View</Button>
     </div>
       <div className='flex gap-[8px] lg:gap-8 mb-[6px] flex-wrap md:flex-nowrap w-full'>
-        <select
-        className="w-full md:w-[192px] h-[40px] px-[13px] py-[9px] rounded-[6px] border border-[#E1E7EF] bg-white"
-        value={locationFilter}
-        onChange={(e) => setLocationFilter(e.target.value)}
-            >
-            <option>All Locations</option>
-            <option>Rancho Cordova</option>
-            <option>Fair Oaks</option>
-        </select>
+       {/* The values of these filter options will need to be refined by the client */}
+  <Select
+    className="w-full md:w-[192px] h-[40px] px-[13px] py-[9px] rounded-[6px] border border-[#E1E7EF] bg-white"
+    value={locationFilter}
+    onChange={(e) => setLocationFilter(e.target.value)}>
+    <MenuItem sx={menuItemStyles}
+  value="All Locations">All Locations</MenuItem>
+    <MenuItem sx={menuItemStyles} value="Rancho Cordova">Rancho Cordova</MenuItem>
+    <MenuItem sx={menuItemStyles} value="Fair Oaks">Fair Oaks</MenuItem>
+  </Select>
         {programVariant === "cpr" ? (
-            <select className="w-full md:w-[192px] h-[40px] px-[13px] py-[9px] rounded-[6px] border border-[#E1E7EF] bg-white"
+            <Select className="w-full md:w-[192px] h-[40px] px-[13px] py-[9px] rounded-[6px] border border-[#E1E7EF] bg-white"
             value={courseFilter}
             onChange={(e) => setCourseFilter(e.target.value)}
             >
-            <option>All Courses</option>
-            <option>CPR Courses</option>
-            <option>First Aid Courses</option>
-        </select>
+            <MenuItem sx={menuItemStyles} value="All Courses">All Courses</MenuItem>
+            <MenuItem sx={menuItemStyles} value="CPR">CPR Courses</MenuItem>
+            <MenuItem sx={menuItemStyles} value="AED">First Aid Courses</MenuItem>
+        </Select>
     ) : (
-         <select className="w-full md:w-[192px] h-[40px] px-[13px] py-[9px] rounded-[6px] border border-[#E1E7EF] bg-white"
+         <Select className="w-full md:w-[192px] h-[40px] px-[13px] py-[9px] rounded-[6px] border border-[#E1E7EF] bg-white"
             value={levelsFilter}
             onChange={(e) => setLevelsFilter(e.target.value)}
             >
-            <option>All Levels</option>
-            <option>Level 130</option>
-            <option>Level 180</option>
-            <option>Level 190</option>
-         </select>
+            <MenuItem sx={menuItemStyles} value="All Levels">All Levels</MenuItem>
+            <MenuItem sx={menuItemStyles} value="Level 130">Level 130</MenuItem>
+            <MenuItem sx={menuItemStyles} value="Level 180">Level 180</MenuItem>
+            <MenuItem sx={menuItemStyles} value="Level 190">Level 190</MenuItem>
+         </Select>
     )}
-        <select className="w-full md:w-[192px] h-[40px] px-[13px] py-[9px] rounded-[6px] border border-[#E1E7EF] bg-white"
+        <Select className="w-full md:w-[192px] h-[40px] px-[13px] py-[9px] rounded-[6px] border border-[#E1E7EF] bg-white"
             value={dateFilter}
             onChange={(e) => setDateFilter(e.target.value)}
             >
-            <option>All Future Classes</option>
-            <option>Next 30 Days</option>
-            <option>Next 60 Days</option>
-            <option>Next Year</option>
-        </select>
+            <MenuItem sx={menuItemStyles} value="Next 30 Days">Next 30 Days</MenuItem>
+            <MenuItem sx={menuItemStyles} value="Next 60 Days">Next 60 Days</MenuItem>
+            <MenuItem sx={menuItemStyles} value="Next Year">Next Year</MenuItem>
+            <MenuItem sx={menuItemStyles} value="All Future Classes">All Future Classes</MenuItem>
+
+        </Select>
       </div>
       <div className="flex flex-col gap-[16px]">
         {filteredPrograms.length > 0 ? (
