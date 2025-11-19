@@ -2,10 +2,14 @@ import { Box } from '@mui/material'
 
 import ProgramFilter from '../components/ProgramFilter'
 
-function WildlandsTraining() {
+interface WildlandsTrainingProps {
+  assets: Record<string, string>;
+}
+
+function WildlandsTraining({assets}:WildlandsTrainingProps) {
   return (
     <Box>
-      <ProgramFilter programVariant="wildfire" />
+      <ProgramFilter programVariant="wildfire" assets={assets}/>
     </Box>
   )
 }

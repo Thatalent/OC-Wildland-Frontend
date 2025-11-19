@@ -73,22 +73,14 @@ function TestimonyCarousel() {
       </div>
 
       <div className="flex justify-center gap-4 mt-6">
-<<<<<<< HEAD
         <Button
         variant={"primary" as any}
-=======
-        <Button variant="gradient"
->>>>>>> main
           onClick={prev}
         >
           Prev
         </Button>
-<<<<<<< HEAD
         <Button
         variant={"primary" as any}
-=======
-        <Button variant="gradient"
->>>>>>> main
           onClick={next}
         >
           Next

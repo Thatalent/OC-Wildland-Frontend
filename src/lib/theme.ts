@@ -73,14 +73,20 @@ export const theme = createTheme({
             },
           },
         },
+        {props: {variant: "tertiary" as any},
+         style: {
+           backgroundColor: "#FFF",
+           color: "#000",
+           borderRadius: 6,
+           border: "1px solid",
+           borderColor: "#E1E7EF",
+      }},
       ],
       styleOverrides: {
         root: {
           borderRadius: 8,
-<<<<<<< HEAD
           textTransform: 'none',
           fontWeight: 500,
-=======
           backgroundColor: 'transparent',
           '&:hover': {
             backgroundColor: 'transparent',
@@ -95,7 +101,6 @@ export const theme = createTheme({
             },
           ],
 
->>>>>>> main
         },
 
       },

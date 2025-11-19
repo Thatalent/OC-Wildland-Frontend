@@ -26,7 +26,11 @@ export const GET_WILDLAND_IMAGES = gql`
           "X Logo",
           "Instagram Logo",
           "Facebook Logo",
-          "YouTube Logo"
+          "YouTube Logo",
+          "Date Icon",
+          "Time Icon",
+          "Location Icon",
+          "Capacity Icon",
           ] } })
     {
       id
