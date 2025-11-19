@@ -42,7 +42,7 @@ function ProgramCard({program, assets}: ProgramCardProps) {
                 }, }}>{program.title}</Typography>
                  <Typography sx={{ lineHeight: "24px", fontWeight: 400, color: "#668099", fontSize:{ lg:"15.25px", md:"13.67px"}, }}>{program.description}</Typography>
             </div>
-            <div className="flex flex-col lg:flex-row mt-4 text-sm gap-[25px]">
+            <div className="flex flex-col lg:flex-row mt-4 text-sm gap-[8px] lg:gap-[25px]">
               <div className='flex gap-[4px]'>
                 <img className="w-[16px] h-[16px]" src={assets["Date Icon"]} alt="Date Icon"/>
                 <Typography noWrap sx={{ lineHeight: "20px", fontWeight: 400, color: "#668099", fontSize: "13.78px" }}>{formatDate(program.startDate, program.endDate)}</Typography>
