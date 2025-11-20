@@ -1,7 +1,4 @@
 
-
-import PostsList from '../components/PostList';
-
 export default function Home() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
@@ -10,10 +7,7 @@ export default function Home() {
         This is the homepage of your OC Wildland project. Here you'll find all the latest posts.
       </p>
 
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Latest Posts</h2>
-        <PostsList />
-      </section>
+    
     </div>
   )
 }
