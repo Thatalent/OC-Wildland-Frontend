@@ -66,7 +66,7 @@ export function KPIStats({ pattern, className }: KPIStatsProps) {
   const sectionBackgroundClass = pattern === 'about' ? 'bg-[rgba(241,245,249,0.5)]' : 'bg-white'
 
   return (
-    <section className={`py-12 ${sectionBackgroundClass} ${className ?? ''}`}>
+    <section className={`py-12 w-[100vw] justify-self-center ${sectionBackgroundClass} ${className ?? ''}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <dl className="mt-2 grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3">
           {kpiItems.map(({ label, value, prefix, suffix, ariaValue }) => (
