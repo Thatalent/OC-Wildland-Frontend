@@ -17,6 +17,8 @@ import Terms from "./pages/Terms";
 import WildlandsTraining from "./pages/WildlandsTraining";
 import Footer from "./components/Footer";
 
+
+
 function App() {
   const { data, loading, error } = useQuery(GET_WILDLAND_IMAGES);
   const assets: Record<string, string> = {};
