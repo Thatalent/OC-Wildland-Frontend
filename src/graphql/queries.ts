@@ -1,15 +1,15 @@
 import { gql } from "@apollo/client";
 
-// Example queries - replace with your actual GraphQL schema
-export const GET_WILDLANDS = gql`
-  query GetWildlands {
-    wildlands {
+export const GET_TEAM_MEMBERS = gql`
+  query GetTeamMembers {
+    teamMembers {
       id
       name
-      location
-      status
-      createdAt
-      updatedAt
+      title
+      roleDescription
+      avatar {
+        url
+      }
     }
   }
 `
