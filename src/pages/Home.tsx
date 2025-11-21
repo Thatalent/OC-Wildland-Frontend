@@ -16,7 +16,7 @@ import { KPIStats } from '../components/KPIStats'
 function Home() {
   return (
     <Box>
-      <Hero />
+      <Hero backgroundImage="/Section.png" />
       <KPIStats pattern="homepage" />
     </Box>
   );
