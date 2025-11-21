@@ -1,6 +1,4 @@
-import { Box } from '@mui/material'
-
-import TestimonyCarousel from "../components/TestimonyCarousel"
+import { Box, Typography, Card, CardContent } from '@mui/material'
 
 function About() {
   return (
@@ -10,4 +8,4 @@ function About() {
   )
 }
 
-export default About
+export default About;

@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client'
+import { gql } from "@apollo/client";
 
 // Example queries - replace with your actual GraphQL schema
 export const GET_WILDLANDS = gql`
@@ -53,7 +53,7 @@ export const GET_WILDLAND_BY_ID = gql`
       updatedAt
     }
   }
-`
+`;
 
 // Example mutations
 export const CREATE_WILDLAND = gql`
@@ -66,7 +66,7 @@ export const CREATE_WILDLAND = gql`
       createdAt
     }
   }
-`
+`;
 
 export const UPDATE_WILDLAND = gql`
   mutation UpdateWildland($id: ID!, $input: UpdateWildlandInput!) {
@@ -78,4 +78,4 @@ export const UPDATE_WILDLAND = gql`
       updatedAt
     }
   }
-`
+`;

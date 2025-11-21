@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles'
+import { createTheme } from "@mui/material/styles";
 
 export const theme = createTheme({
   palette: {
@@ -8,13 +8,13 @@ export const theme = createTheme({
       light: '#60a5fa',
     },
     secondary: {
-      main: '#f59e0b',
-      dark: '#d97706',
-      light: '#fbbf24',
+      main: "#f59e0b",
+      dark: "#d97706",
+      light: "#fbbf24",
     },
     background: {
-      default: '#f8fafc',
-      paper: '#ffffff',
+      default: "#f8fafc",
+      paper: "#ffffff",
     },
   },
   typography: {
@@ -51,7 +51,7 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          textTransform: 'none',
+          textTransform: "none",
           borderRadius: 8,
           backgroundColor: 'transparent',
           '&:hover': {
@@ -75,9 +75,11 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 8,
-          border: "1px solid #E1E7EF,"
+          border: "1px solid #E1E7EF",
+          boxShadow:
+            "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
         },
       },
     },
   },
-})
+});
