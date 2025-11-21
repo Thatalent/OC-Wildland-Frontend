@@ -3,7 +3,7 @@ import Image from "/Image+Shadow.png";
 
 export default function HomeBanner() {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center py-20">
+    <section className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center py-20 px-6 md:px-20">
       {/* LEFT TEXT SECTION */}
       <div>
         <h1 className="text-4xl font-bold leading-tight text-gray-900 mb-6">

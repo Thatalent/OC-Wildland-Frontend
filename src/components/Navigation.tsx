@@ -10,11 +10,11 @@ interface NavigationProps {
   assets: Record<string, string>;
 }
 
-declare module '@mui/material/Button' {
-  interface ButtonPropsVariantOverrides {
-    gradient: true;
-  }
-}
+// declare module '@mui/material/Button' {
+//   interface ButtonPropsVariantOverrides {
+//     gradient: true;
+//   }
+// }
 
 function Navigation({ assets }: NavigationProps) {
   const [cartCount, setCartCount] = useState<number>(1);
@@ -144,11 +144,8 @@ function Navigation({ assets }: NavigationProps) {
         }}
       >
         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", py: "10px" }}>
-          <img
-            src={assets["OC Wildland Navbar Logo"]}
-            alt="OC-Wildland Logo"
-            style={{ width: "150px", height: "40px" }}
-          />
+          <img src={assets?.["OC Wildland Navbar Logo"]} alt="" />
+
           <CloseIcon sx={{ cursor: "pointer" }} onClick={handleDrawerToggle} />
         </Box>
         <Box sx={{ borderTop: "1px solid #e1e7ef", pt: "17px" }}>

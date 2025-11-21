@@ -1,81 +1,69 @@
-import { gql } from '@apollo/client'
+import { gql } from "@apollo/client";
 
-// Example queries - replace with your actual GraphQL schema
-export const GET_WILDLANDS = gql`
-  query GetWildlands {
-    wildlands {
+/* ============================
+   GET ALL POSTS
+   (Use these as "classes", "training programs", etc.)
+=============================== */
+export const GET_POSTS = gql`
+  query GetPosts {
+    posts {
       id
-      name
-      location
-      status
-      createdAt
-      updatedAt
-    }
-  }
-`
-export const GET_WILDLAND_IMAGES = gql`
-  query GetWildlandImages {
-    images(
-      where: {
-        name: {
-          in: [
-          "OC Wildland Navbar Logo",
-          "OC Wildland Footer Logo",
-          "Cart Icon",
-          "Search Icon",
-          "X Logo",
-          "Instagram Logo",
-          "Facebook Logo",
-          "YouTube Logo"
-          ] } })
-    {
-      id
-      imageUrl {
-        url
+      title
+      content {
+        document
       }
-      altText
-      name
+      tags {
+        name
+      }
     }
   }
-`
+`;
 
-export const GET_WILDLAND_BY_ID = gql`
-  query GetWildlandById($id: ID!) {
-    wildland(id: $id) {
+/* ============================
+   GET ONE POST BY ID
+=============================== */
+export const GET_POST_BY_ID = gql`
+  query GetPostById($id: ID!) {
+    post(where: { id: $id }) {
+      id
+      title
+      content {
+        document
+      }
+      tags {
+        name
+      }
+    }
+  }
+`;
+
+/* ============================
+   GET FOOTERS (for footer text)
+=============================== */
+export const GET_FOOTERS = gql`
+  query GetFooters {
+    footers {
+      id
+      text {
+        document
+      }
+    }
+  }
+`;
+
+/* ============================
+   GET KPI STATS (Homepage Metrics)
+=============================== */
+export const GET_KPI_STATS = gql`
+  query GetKPIStats {
+    kpiStatistics {
       id
       name
-      location
-      status
-      description
-      area
-      riskLevel
-      createdAt
-      updatedAt
+      groupsTrained
+      clientSatisfaction
+      yearsOfExperience
+      trainedFirefighters
+      successRate
     }
   }
-`
-
-// Example mutations
-export const CREATE_WILDLAND = gql`
-  mutation CreateWildland($input: CreateWildlandInput!) {
-    createWildland(input: $input) {
-      id
-      name
-      location
-      status
-      createdAt
-    }
-  }
-`
-
-export const UPDATE_WILDLAND = gql`
-  mutation UpdateWildland($id: ID!, $input: UpdateWildlandInput!) {
-    updateWildland(id: $id, input: $input) {
-      id
-      name
-      location
-      status
-      updatedAt
-    }
-  }
-`
+`;

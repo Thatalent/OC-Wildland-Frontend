@@ -5,114 +5,189 @@ interface FooterProps {
   assets: Record<string, string>;
 }
 
-
-function Footer({assets}: FooterProps) {
+export default function Footer({ assets }: FooterProps) {
   return (
-    <Box sx={{ backgroundColor: '#1f262e', color: '#fff', py: '48px', px: {xs: '16px', md: '80px'}}}>
-      <Box sx={{ display: 'flex', gap: '32px', mb: '32px', justifyContent: 'space-between', flexDirection: {xs: 'column', md: 'row'}}}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px', width: {sx: '358px', md:'592px'}}}>
-          <Box>
-            <Link to="/">
-            <img src={assets["OC Wildland Footer Logo"]} alt="OC-Wildland Logo" style={{ width: '260px', height: '45px' }} />
-            </Link>
-          </Box>
-            <Typography variant="h5" sx={{maxWidth: '448px' }}>
-              Dedicated to providing the safety and CPR training our community
-              needs so that everyone is prepared for emergency response and
-              prepared to help others in emergency situations.
-            </Typography>
-          <Box sx={{display: 'flex', gap: '16px'}}>
-            <IconButton
-              component="a"
-              href="https://www.facebook.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{width: '20px', height: '20px'}}
-            >
-              <img src={assets["Facebook Logo"]} alt="Facebook Logo" style={{ width: '20px', height: '20px' }} />
+    <Box
+      sx={{
+        backgroundColor: "#1F262E",
+        color: "#FFFFFF",
+        pt: "48px",
+        pb: "48px",
+        px: { xs: "20px", md: "80px" },
+      }}
+    >
+      {/* TOP SECTION */}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          justifyContent: "space-between",
+          gap: "40px",
+          mb: "40px",
+        }}
+      >
+        {/* LEFT COLUMN */}
+        <Box sx={{ maxWidth: "500px" }}>
+          <img
+            src={assets["OC Wildland Footer Logo"]}
+            alt="OC-Wildland Logo"
+            style={{
+              width: "260px",
+              height: "auto",
+              marginBottom: "20px",
+            }}
+          />
+
+          <Typography
+            sx={{
+              fontSize: "16px",
+              lineHeight: "24px",
+              color: "rgba(255,255,255,0.8)",
+              mb: "24px",
+              maxWidth: "420px",
+            }}
+          >
+            Dedicated to providing the safety and CPR training our community
+            needs so that everyone is prepared for emergency response and able
+            to help others in emergency situations.
+          </Typography>
+
+          {/* Social Icons */}
+          <Box sx={{ display: "flex", gap: "16px" }}>
+            <IconButton>
+              <img
+                src={assets["Facebook Logo"]}
+                width={20}
+                height={20}
+                alt="Facebook"
+              />
             </IconButton>
-            <IconButton
-              component="a"
-              href="https://www.x.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{width: '20px', height: '20px'}}
-            >
-              <img src={assets["X Logo"]} alt="X Logo" style={{ width: '15px', height: '15px' }}/>
+            <IconButton>
+              <img src={assets["X Logo"]} width={20} height={20} alt="X" />
             </IconButton>
-            <IconButton
-              component="a"
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{width: '20px', height: '20px'}}
-            >
-              <img src={assets["Instagram Logo"]} alt="Instagram Logo" style={{ width: '20px', height: '20px' }}/>
+            <IconButton>
+              <img
+                src={assets["Instagram Logo"]}
+                width={20}
+                height={20}
+                alt="Instagram"
+              />
             </IconButton>
-            <IconButton
-              component="a"
-              href="https://www.youtube.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{width: '20px', height: '20px'}}
-            >
-              <img src={assets["YouTube Logo"]} alt="YouTube Logo" style={{ width: '20px', height: '20px' }}/>
+            <IconButton>
+              <img
+                src={assets["YouTube Logo"]}
+                width={20}
+                height={20}
+                alt="YouTube"
+              />
             </IconButton>
           </Box>
         </Box>
+
+        {/* QUICK LINKS */}
         <Box>
-          <Typography mb="16px">
+          <Typography sx={{ mb: "16px", fontWeight: 600 }}>
             Quick Links
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '280px'}}>
-            <Typography component={Link} to="/About" variant="h5" className="no-underline block">About us</Typography>
-            <Typography component={Link} to="/Store" variant="h5" className="no-underline">Store</Typography>
-            <Typography component={Link} to="/Contact" variant="h5" className="no-underline">Contact</Typography>
-            <Typography component={Link} to="/FAQ" variant="h5" className="no-underline">FAQs</Typography>
+
+          <Box sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <Link to="/About" className="no-underline text-white">
+              About Us
+            </Link>
+            <Link to="/Store" className="no-underline text-white">
+              Store
+            </Link>
+            <Link to="/Contact" className="no-underline text-white">
+              Contact
+            </Link>
+            <Link to="/FAQ" className="no-underline text-white">
+              FAQs
+            </Link>
           </Box>
         </Box>
+
+        {/* TRAINING LINKS */}
         <Box>
-          <Typography>
-            Training
-          </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', mt: '16px', width: '280px' }}>
-            <Typography component={Link} to="/Training" variant="h5" className="no-underline">Wildland Fire</Typography>
-            <Typography component={Link} to="/CPR" variant="h5" className="no-underline">American Heart Association</Typography>
-            <Typography component={Link} to="/CustomTraining" variant="h5" className="no-underline">Custom & Group Training</Typography>
+          <Typography sx={{ mb: "16px", fontWeight: 600 }}>Training</Typography>
+
+          <Box sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <Link to="/Training" className="no-underline text-white">
+              Wildland Fire
+            </Link>
+            <Link to="/CPR" className="no-underline text-white">
+              American Heart Association
+            </Link>
+            <Link to="/CustomTraining" className="no-underline text-white">
+              Custom & Group Training
+            </Link>
           </Box>
         </Box>
       </Box>
-        <Box sx={{display: "flex", flexDirection: {xs: "column", md: "row"}, gap: {xs: "16px"}, justifyContent: "space-between", py: "32px", borderTop: "1px solid rgba(255, 255, 255, .1)", borderBottom: "1px solid rgba(255, 255, 255, .1)"}}>
-          <Typography variant="h5" sx={{color: "rgba(255, 255, 255, .6)", textWrap: {md: "nowrap"}, '@media (min-width: 899px) and (max-width: 1000px)': {fontSize: '12px'}}}>
-            © 2025 OC-Wildland Fire & CPR Training. All rights reserved.
-          </Typography>
-          <Box  sx={{display: "flex", gap: {xs: "3px", md: "24px"}, flexDirection: {xs: 'column', md: 'row'}, alignItems: {xs: 'flex-start', md: 'center'}}}>
-            <Typography variant="h5" sx={{color: "rgba(255, 255, 255, .6)", textWrap: "nowrap", '@media (min-width: 899px) and (max-width: 1000px)': {fontSize: '12px'}}}>
-              (949) 249-1227
-            </Typography>
-            <Typography variant="h5" sx={{color: "rgba(255, 255, 255, .6)", '@media (min-width: 899px) and (max-width: 1000px)': {fontSize: '12px'}}}>
-              training@ocwildlandfire.com
-            </Typography>
-            <Typography variant="h5" sx={{color: "rgba(255, 255, 255, .6)", textWrap: "nowrap", '@media (min-width: 899px) and (max-width: 1000px)': {fontSize: '12px'}}}>
-              Orange County, CA
-            </Typography>
-          </Box>
+
+      {/* MIDDLE BAR */}
+      <Box
+        sx={{
+          borderTop: "1px solid rgba(255,255,255,0.1)",
+          borderBottom: "1px solid rgba(255,255,255,0.1)",
+          py: "20px",
+          mb: "24px",
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          justifyContent: "space-between",
+          gap: "12px",
+        }}
+      >
+        <Typography sx={{ color: "rgba(255,255,255,0.6)" }}>
+          © 2025 OC-Wildland Fire & CPR Training. All rights reserved.
+        </Typography>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            gap: "20px",
+            color: "rgba(255,255,255,0.6)",
+          }}
+        >
+          <Typography>(949) 249-1227</Typography>
+          <Typography>training@ocwildlandfire.com</Typography>
+          <Typography>Orange County, CA</Typography>
         </Box>
-        <Box sx={{mt: "17px"}}>
-          <Typography variant="h4" sx={{mb: '16px'}}><span className="font-bold">American Heart Association Disclaimer:</span> This organization is an authorized American Heart Association Training Center. The American Heart Association strongly promotes knowledge and proficiency in BLS, ACLS,
-            and PALS and has developed instructional materials for this purpose.</Typography>
-          <Typography variant="h4"><span className="font-bold">Legal Disclaimer:</span> Training completion does not guarantee employment or certification maintenance. Students are responsible for maintaining current certifications and following all applicable regulations.</Typography>
-          <Box sx={{display: 'flex', flexDirection: {xs: "column", md: 'row'}, gap: {xs: "12px", md: "16px"}, justifyContent: {xs: "flex-start", md: "center"}, mt: "16px"}}>
-            <Typography component={Link} to="/PrivacyPolicy" variant="h4">
-              Privacy Policy
-            </Typography>
-            <Typography component={Link} to="/Terms" variant="h4">
-              Terms and Conditions
-            </Typography>
-          </Box>
+      </Box>
+
+      {/* BOTTOM LEGAL SECTION */}
+      <Box sx={{ mx: "auto", textAlign: "center" }}>
+        <Typography sx={{ mb: "16px", lineHeight: "24px" }}>
+          <strong>American Heart Association Disclaimer:</strong> This
+          organization is an authorized American Heart Association Training
+          Center. The American Heart Association strongly promotes knowledge and
+          proficiency in BLS, ACLS, and PALS.
+        </Typography>
+
+        <Typography sx={{ lineHeight: "24px" }}>
+          <strong>Legal Disclaimer:</strong> Training completion does not
+          guarantee employment or certification maintenance. Students are
+          responsible for keeping certifications current.
+        </Typography>
+
+        {/* Policy Links */}
+        <Box
+          sx={{
+            mt: "24px",
+            display: "flex",
+            justifyContent: "center",
+            gap: "24px",
+            flexWrap: "wrap",
+          }}
+        >
+          <Link to="/PrivacyPolicy" className="no-underline text-white">
+            Privacy Policy
+          </Link>
+          <Link to="/Terms" className="no-underline text-white">
+            Terms & Conditions
+          </Link>
         </Box>
+      </Box>
     </Box>
   );
 }
-
-export default Footer;

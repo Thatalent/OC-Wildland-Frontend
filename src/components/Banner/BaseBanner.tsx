@@ -1,13 +1,29 @@
-export default function BaseBanner({ title, description, image }: { title: string; description: string; image: string }) {
+import { ReactNode } from "react";
+
+export default function BaseBanner({
+  image,
+  imagePos = "left",
+  children,
+}: {
+  image: string;
+  imagePos?: "left" | "right";
+  children: ReactNode;
+}) {
   return (
-    <div
-      className="w-full h-[300px] bg-cover bg-center text-white flex items-center justify-center"
-      style={{ backgroundImage: `url(${image})` }}
+    <section
+      className={`grid grid-cols-1 md:grid-cols-2 items-center gap-10 py-20 ${
+        imagePos === "right" ? "md:flex-row-reverse" : ""
+      }`}
     >
-      <div className="bg-black/40 p-6 rounded-xl text-center">
-        <h1 className="text-4xl font-bold">{title}</h1>
-        <p className="mt-2 text-lg">{description}</p>
+      <img
+        src={image}
+        alt="Banner Visual"
+        className="rounded-xl w-full h-[384px] object-cover"
+      />
+
+      <div>
+        {children}
       </div>
-    </div>
+    </section>
   );
 }
