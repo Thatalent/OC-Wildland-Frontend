@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import { Container, Box } from "@mui/material";
-import Header from "./pages/Header";
+import { Container, Box, Typography } from "@mui/material";
+import { useQuery } from "@apollo/client";
+import { GET_WILDLAND_IMAGES } from "./graphql/queries";
+import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Consultation from "./pages/Consultation";
@@ -13,15 +15,24 @@ import Store from "./pages/Store";
 import Training from "./pages/Training";
 import Terms from "./pages/Terms";
 import WildlandsTraining from "./pages/WildlandsTraining";
-import MeetTheTeam from "./components/MeetTheTeam";
+import Footer from "./components/Footer";
 
 function App() {
-  return (
-    <Box className="min-h-screen bg-gray-50">
-      <Header />
-      <MeetTheTeam />
+  const { data, loading, error } = useQuery(GET_WILDLAND_IMAGES);
+  const assets: Record<string, string> = {};
 
-      <Container maxWidth="lg" className="py-8">
+  if (loading) return <Typography>Loading...</Typography>
+  if (error) return <Typography color="error">Error: {error.message}</Typography>
+
+  data.images.forEach((img: any) => {
+    assets[img.name] = img.imageUrl?.url;
+  });
+
+  return (
+    <Box className="min-h-screen bg-white">
+      <Navigation assets={assets} />
+
+      <Container maxWidth="xl" className="mx-0-auto">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -37,6 +48,7 @@ function App() {
           <Route path="/wildlandstraining" element={<WildlandsTraining />} />
         </Routes>
       </Container>
+      <Footer assets={assets} />
     </Box>
   );
 }
