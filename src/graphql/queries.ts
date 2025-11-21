@@ -12,7 +12,32 @@ export const GET_WILDLANDS = gql`
       updatedAt
     }
   }
-`;
+`
+export const GET_WILDLAND_IMAGES = gql`
+  query GetWildlandImages {
+    images(
+      where: {
+        name: {
+          in: [
+          "OC Wildland Navbar Logo",
+          "OC Wildland Footer Logo",
+          "Cart Icon",
+          "Search Icon",
+          "X Logo",
+          "Instagram Logo",
+          "Facebook Logo",
+          "YouTube Logo"
+          ] } })
+    {
+      id
+      imageUrl {
+        url
+      }
+      altText
+      name
+    }
+  }
+`
 
 export const GET_WILDLAND_BY_ID = gql`
   query GetWildlandById($id: ID!) {
