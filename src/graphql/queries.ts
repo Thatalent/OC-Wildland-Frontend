@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client'
+import { gql } from "@apollo/client";
 
 // Example queries - replace with your actual GraphQL schema
 export const GET_WILDLANDS = gql`
@@ -10,6 +10,31 @@ export const GET_WILDLANDS = gql`
       status
       createdAt
       updatedAt
+    }
+  }
+`
+export const GET_WILDLAND_IMAGES = gql`
+  query GetWildlandImages {
+    images(
+      where: {
+        name: {
+          in: [
+          "OC Wildland Navbar Logo",
+          "OC Wildland Footer Logo",
+          "Cart Icon",
+          "Search Icon",
+          "X Logo",
+          "Instagram Logo",
+          "Facebook Logo",
+          "YouTube Logo"
+          ] } })
+    {
+      id
+      imageUrl {
+        url
+      }
+      altText
+      name
     }
   }
 `
@@ -28,7 +53,7 @@ export const GET_WILDLAND_BY_ID = gql`
       updatedAt
     }
   }
-`
+`;
 
 export const GET_KPI_STATS = gql`
   query GetKPIStats {
@@ -56,7 +81,7 @@ export const CREATE_WILDLAND = gql`
       createdAt
     }
   }
-`
+`;
 
 export const UPDATE_WILDLAND = gql`
   mutation UpdateWildland($id: ID!, $input: UpdateWildlandInput!) {
@@ -68,4 +93,4 @@ export const UPDATE_WILDLAND = gql`
       updatedAt
     }
   }
-`
+`;

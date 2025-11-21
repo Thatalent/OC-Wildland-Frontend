@@ -46,7 +46,7 @@ function CustomTraining() {
         </CardContent>
       </Card>
     </Box>
-  )
+  );
 }
 
 export default CustomTraining

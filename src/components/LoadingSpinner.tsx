@@ -1,10 +1,10 @@
-import { CircularProgress, Box, Typography } from '@mui/material'
+import { CircularProgress, Box, Typography } from "@mui/material";
 
 interface LoadingSpinnerProps {
-  message?: string
+  message?: string;
 }
 
-function LoadingSpinner({ message = 'Loading...' }: LoadingSpinnerProps) {
+function LoadingSpinner({ message = "Loading..." }: LoadingSpinnerProps) {
   return (
     <Box
       display="flex"
@@ -18,7 +18,7 @@ function LoadingSpinner({ message = 'Loading...' }: LoadingSpinnerProps) {
         {message}
       </Typography>
     </Box>
-  )
+  );
 }
 
-export default LoadingSpinner
+export default LoadingSpinner;
