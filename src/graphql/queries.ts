@@ -79,3 +79,12 @@ export const UPDATE_WILDLAND = gql`
     }
   }
 `
+
+// Contact form submission (Keystone list: ContactSubmission)
+export const CREATE_CONTACT_SUBMISSION = gql`
+  mutation CreateContactSubmission($data: ContactSubmissionCreateInput!) {
+    createContactSubmission(data: $data) {
+      id
+    }
+  }
+`
