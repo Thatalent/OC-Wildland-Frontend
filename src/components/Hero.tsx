@@ -48,7 +48,7 @@ const Hero: FC<HeroProps> = (props) => {
       height: "900px",
       maxHeight: "900px",
       width: "100dvw",
-      maxWidth: "1440px",
+      // maxWidth: "1440px",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",

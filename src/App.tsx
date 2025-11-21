@@ -30,9 +30,9 @@ function App() {
 
   return (
     <Box className="min-h-screen bg-gray-50">
-      <Navigation assets={assets}/>
+      <Navigation assets={assets} />
 
-      <Container maxWidth="xl" className="py-8">
+      <Container maxWidth="xl" className="mx-0-auto">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -48,7 +48,7 @@ function App() {
           <Route path="/wildlandstraining" element={<WildlandsTraining />} />
         </Routes>
       </Container>
-      <Footer assets={assets}/>
+      <Footer assets={assets} />
     </Box>
   );
 }
