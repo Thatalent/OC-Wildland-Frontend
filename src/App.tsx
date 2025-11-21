@@ -29,7 +29,7 @@ function App() {
   });
 
   return (
-    <Box className="min-h-screen bg-gray-50">
+    <Box className="min-h-screen bg-white">
       <Navigation assets={assets} />
 
       <Container maxWidth="xl" className="mx-0-auto">

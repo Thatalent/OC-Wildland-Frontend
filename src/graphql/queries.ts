@@ -55,6 +55,21 @@ export const GET_WILDLAND_BY_ID = gql`
   }
 `;
 
+export const GET_KPI_STATS = gql`
+  query GetKPIStats {
+    kpiStatistics {
+      id
+      name
+      groupsTrained
+      clientSatisfaction
+      yearsOfExperience
+      trainedFirefighters
+      successRate
+      updatedAt
+    }
+  }
+`
+
 // Example mutations
 export const CREATE_WILDLAND = gql`
   mutation CreateWildland($input: CreateWildlandInput!) {
