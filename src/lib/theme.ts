@@ -28,7 +28,8 @@ export const theme = createTheme({
       fontWeight: 600,
     },
     h3: {
-      fontWeight: 600,
+      fontWeight: 500,
+      fontSize: '36px',
     },
     h4: {
       fontWeight: 400,
