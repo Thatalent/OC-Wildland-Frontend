@@ -1,83 +1,110 @@
 import { useQuery } from "@apollo/client";
 import { GET_TEAM_MEMBERS } from "../graphql/queries";
+import { Card, CardContent, Typography } from "@mui/material";
 
 export default function MeetTheTeam() {
   const { data, loading, error } = useQuery(GET_TEAM_MEMBERS);
 
-  if (loading)
-    return (
-      <section className="py-16 bg-gray-50 text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">
-          Meet Our Expert Team
-        </h2>
-        <p className="text-gray-600 mb-10">Loading team information...</p>
-      </section>
-    );
-
-  if (error)
-    return (
-      <section className="py-16 bg-gray-50 text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">
-          Meet Our Expert Team
-        </h2>
-        <p className="text-red-500">Failed to load team members</p>
-      </section>
-    );
-
   const members = data?.teamMembers || [];
 
   return (
-    <section className="py-16 bg-[rgba(241, 245, 249, 0.5)]">
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold text-[rgba(31,38,46,1)] mb-4">
+    <section className="py-20 px-6" style={{ backgroundColor: "#F1F5F980" }}>
+      <div className="max-w-6xl w-full text-center mx-auto">
+        <Typography
+          variant="h3"
+          component="h2"
+          sx={{
+            fontSize: "36px",
+            fontWeight: 700,
+            lineHeight: "40px",
+            color: "#1F2630",
+            mb: 2,
+          }}
+        >
           Meet Our Expert Team
-        </h2>
-        <p className="text-[rgba(102,128,153,1)] mb-12 mx-auto">
-          Our team members are experts with decades of real-world firefighting and
-          emergency response experience
-        </p>
+        </Typography>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <Typography
+          variant="body1"
+          sx={{
+            fontSize: "16.88px",
+            lineHeight: "28px",
+            color: "#667F99",
+            mb: 5,
+          }}
+        >
+          Our team members are experts with decades of real-world firefighting
+          and emergency response experience
+        </Typography>
+
+        {loading && <p>Loading team information...</p>}
+        {error && <p className="text-red-500">Failed to load team members</p>}
+
+        <div className="mt-12 flex flex-wrap justify-center gap-8 w-full">
           {members.map((member: any) => (
-            <div
+            <Card
               key={member.id}
-              className="bg-white rounded-2xl shadow-md p-8 flex flex-col items-center hover:shadow-lg transition duration-300"
+              className="cursor-pointer border border-gray-100 shadow-sm hover:shadow-md transition w-full sm:w-[50%] lg:w-[22%] max-w-xs"
             >
-              <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-4 overflow-hidden">
-                {member.avatar?.url ? (
-                  <img
-                    src={member.avatar.url}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-10 h-10 text-gray-400"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15.75 7.5a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 21a8.25 8.25 0 1115 0H4.5z"
+              <CardContent className="flex flex-col items-center text-center gap-4 p-8 w-full break-words">
+                {/* Icon */}
+                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-transparent">
+                  {member.avatar?.url ? (
+                    <img
+                      src={member.avatar.url}
+                      alt={member.name}
+                      className="w-12 h-12 object-cover rounded-full"
                     />
-                  </svg>
-                )}
-              </div>
+                  ) : (
+                    <img
+                      src="/teamIcon.svg"
+                      alt="team icon"
+                      className="w-12 h-12"
+                    />
+                  )}
+                </div>
 
-              <h3 className="text-lg font-semibold text-[rgba(31,38,46,1)]">
-                {member.name || "Team Member"}
-              </h3>
-              <p className="text-sm text-orange-600 font-medium mb-2">
-                {member.title || "Position"}
-              </p>
-              <p className="text-[rgba(102,128,153,1)] text-sm leading-relaxed">
-                {member.roleDescription || "Role description goes here."}
-              </p>
-            </div>
+                {/* Name */}
+                <Typography
+                  variant="h5"
+                  component="h3"
+                  sx={{
+                    fontSize: "20px",
+                    fontWeight: 600,
+                    lineHeight: "24px",
+                    color: "#1F2630",
+                  }}
+                >
+                  {member.name || "Team Member"}
+                </Typography>
+
+                {/* Role */}
+                <Typography
+                  variant="h4"
+                  component="h4"
+                  sx={{
+                    fontSize: "13.78px",
+                    fontWeight: 400,
+                    lineHeight: "20px",
+                    color: "#F36E1B",
+                  }}
+                >
+                  {member.title || "Position"}
+                </Typography>
+
+                {/* Description */}
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontSize: "13.56px",
+                    lineHeight: "20px",
+                    color: "#667F99",
+                  }}
+                >
+                  {member.roleDescription || "Description"}
+                </Typography>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>
