@@ -16,6 +16,7 @@ import Training from "./pages/Training";
 import Terms from "./pages/Terms";
 import WildlandsTraining from "./pages/WildlandsTraining";
 import Footer from "./components/Footer";
+import Checkout from "./components/Checkout";
 
 function App() {
   const { data, loading, error } = useQuery(GET_WILDLAND_IMAGES);
@@ -46,6 +47,7 @@ function App() {
           <Route path="/training" element={<Training />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/wildlandstraining" element={<WildlandsTraining />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </Container>
       <Footer assets={assets} />

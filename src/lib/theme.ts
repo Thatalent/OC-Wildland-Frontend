@@ -22,30 +22,44 @@ export const theme = createTheme({
       '"Inter", sans-serif',
     ].join(','),
     h1: {
-      fontWeight: 600,
+      fontWeight: 700,
+      fontSize: "76px",
+      letterSpacing: "-1.5%",
     },
     h2: {
-      fontWeight: 600,
+      fontWeight: 700,
+      fontSize: "54px",
+      letterSpacing: "-0.5%",
     },
     h3: {
-      fontWeight: 600,
+      fontWeight: 700,
+      fontSize: "36px",
+      letterSpacing: "0%",
     },
     h4: {
-      fontWeight: 400,
-      fontSize: '12px',
-      lineHeight: '16px',
-      color: 'rgba(255, 255, 255, .5)',
+      fontWeight: 600,
+      fontSize: '22px',
+      lineHeight: '24px',
     },
     h5: {
-      fontWeight: 400,
-      lineHeight: "20px",
-      color: "rgba(255, 255, 255, .8)",
-      fontSize: '13.67px',
+      fontWeight: 600,
+      fontSize: "18px",
+      lineHeight: "28px",
     },
     h6: {
       fontWeight: 500,
       fontSize: '14px',
     },
+    body1: {
+      fontWeight: 400,
+      fontSize: "13.56px",
+      lineHeight: "20px",
+    },
+    subtitle2: {
+      fontWeight: 400,
+      fontSize: "20px",
+      lineHeight: "28px",
+    }
   },
   components: {
     MuiButton: {
